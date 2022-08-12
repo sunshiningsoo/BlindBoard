@@ -12,6 +12,8 @@
 		DF050B2D28A4078200A5912D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF050B2C28A4078200A5912D /* LoginViewController.swift */; };
 		DF050B3228A4078300A5912D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF050B3128A4078300A5912D /* Assets.xcassets */; };
 		DF050B3528A4078300A5912D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DF050B3328A4078300A5912D /* LaunchScreen.storyboard */; };
+		DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF050B4328A4E6D300A5912D /* UIView+Extension.swift */; };
+		DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF050B4528A60E2F00A5912D /* UITextField+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		DF050B3128A4078300A5912D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DF050B3428A4078300A5912D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DF050B3628A4078300A5912D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DF050B4328A4E6D300A5912D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		DF050B4528A60E2F00A5912D /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,56 @@
 		DF050B2728A4078200A5912D /* BlindBoard */ = {
 			isa = PBXGroup;
 			children = (
+				DF050B3F28A40A2500A5912D /* Utils */,
+				DF050B3E28A4098A00A5912D /* Views */,
+				DF050B3D28A4097E00A5912D /* Models */,
+				DF050B3C28A4097600A5912D /* ViewControllers */,
 				DF050B2828A4078200A5912D /* AppDelegate.swift */,
 				DF050B2A28A4078200A5912D /* SceneDelegate.swift */,
-				DF050B2C28A4078200A5912D /* LoginViewController.swift */,
 				DF050B3128A4078300A5912D /* Assets.xcassets */,
 				DF050B3328A4078300A5912D /* LaunchScreen.storyboard */,
 				DF050B3628A4078300A5912D /* Info.plist */,
 			);
 			path = BlindBoard;
+			sourceTree = "<group>";
+		};
+		DF050B3C28A4097600A5912D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DF050B2C28A4078200A5912D /* LoginViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DF050B3D28A4097E00A5912D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DF050B3E28A4098A00A5912D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DF050B3F28A40A2500A5912D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DF050B4028A40A2B00A5912D /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DF050B4028A40A2B00A5912D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DF050B4328A4E6D300A5912D /* UIView+Extension.swift */,
+				DF050B4528A60E2F00A5912D /* UITextField+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +180,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */,
 				DF050B2D28A4078200A5912D /* LoginViewController.swift in Sources */,
 				DF050B2928A4078200A5912D /* AppDelegate.swift in Sources */,
+				DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */,
 				DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
