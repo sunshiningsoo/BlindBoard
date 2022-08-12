@@ -9,6 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    //MARK: - Component
     private let titleLabel: UILabel = {
         let title = UILabel()
         title.text = "Blind Board⌨"
@@ -34,11 +35,12 @@ class LoginViewController: UIViewController {
         return text
     }()
     
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("로그인", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(goToBoardView), for: .touchUpInside)
         return button
     }()
     
@@ -49,7 +51,15 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 10
         return button
     }()
+    
+    @objc
+    func goToBoardView() {
+        let vc = BoardTableViewController()
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
 
+    //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         
