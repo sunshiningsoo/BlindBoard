@@ -14,7 +14,8 @@ struct Number {
 
 class BoardTableViewController: UITableViewController {
     
-    let arr: [Number] = [Number(name: "1"), Number(name: "2"), Number(name: "3")]
+    //MARK: - properties
+    private let arr: [Number] = [Number(name: "1"), Number(name: "2"), Number(name: "3")]
     
     struct BoardTableCell {
         static let cellName = "BoardTableViewCell"
@@ -34,7 +35,7 @@ class BoardTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
-        
+        title = "Bline Board⌨️"
     }
     
     @objc
@@ -61,8 +62,7 @@ class BoardTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 상세 페이지로 넘어가기
-        print(arr[indexPath.item])
-        navigationController?.pushViewController(UIViewController(), animated: true)
+        navigationController?.pushViewController(DetailViewController(number: arr[indexPath.item]), animated: true)
     }
     
     

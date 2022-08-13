@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    //MARK: - Component
+    //MARK: - properties
     private let titleLabel: UILabel = {
         let title = UILabel()
         title.text = "Blind Board⌨"
@@ -23,6 +23,7 @@ class LoginViewController: UIViewController {
         text.layer.cornerRadius = 5
         text.backgroundColor = .lightGray
         text.addLeftPadding()
+        text.clearButtonMode = .whileEditing
         return text
     }()
     
@@ -32,6 +33,7 @@ class LoginViewController: UIViewController {
         text.layer.cornerRadius = 5
         text.backgroundColor = .lightGray
         text.addLeftPadding()
+        text.clearButtonMode = .whileEditing
         return text
     }()
     
@@ -69,7 +71,6 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = .systemBackground
     }
-
     
     private func render() {
         view.addSubview(titleLabel)
@@ -94,4 +95,3 @@ class LoginViewController: UIViewController {
     }
 
 }
-

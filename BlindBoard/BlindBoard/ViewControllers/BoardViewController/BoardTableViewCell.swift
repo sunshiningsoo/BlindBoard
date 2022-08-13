@@ -9,9 +9,18 @@ import UIKit
 
 class BoardTableViewCell: UITableViewCell {
     
+    //MARK: - properties
     private let titleLabel: UILabel = {
         let title = UILabel()
         return title
+    }()
+    
+    private let content: UILabel = {
+        let content = UILabel()
+        content.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        content.text = "asdfasdfaljshdflkajshdflkjahsdlkfjhasldkfhalksdfhlaksjdhf"
+        content.font = UIFont.systemFont(ofSize: 14)
+        return content
     }()
 
     override func awakeFromNib() {
@@ -26,6 +35,7 @@ class BoardTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    //MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         render()
@@ -37,7 +47,10 @@ class BoardTableViewCell: UITableViewCell {
     
     private func render() {
         self.addSubview(titleLabel)
-        titleLabel.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, paddingTop: 30, paddingLeft: 30, paddingBottom: 30)
+        titleLabel.anchor(top: self.topAnchor, left: self.leftAnchor, right: self.rightAnchor, paddingTop: 10, paddingLeft: 24, paddingRight: 24)
+        
+        self.addSubview(content)
+        content.anchor(top: titleLabel.bottomAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 5, paddingLeft: 24, paddingBottom: 10, paddingRight: 24)
     }
     
     func set(_ label: Number) {

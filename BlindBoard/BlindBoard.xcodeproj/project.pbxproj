@@ -17,6 +17,7 @@
 		DF6F3ECB28A6119B00A2D052 /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECA28A6119B00A2D052 /* BoardTableViewController.swift */; };
 		DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */; };
 		DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */; };
+		DF6F3ED328A7269500A2D052 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED228A7269500A2D052 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DF6F3ECA28A6119B00A2D052 /* BoardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
 		DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
 		DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBoardViewController.swift; sourceTree = "<group>"; };
+		DF6F3ED228A7269500A2D052 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,9 +82,10 @@
 		DF050B3C28A4097600A5912D /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				DF6F3ED128A6786B00A2D052 /* BoardViewController */,
 				DF050B2C28A4078200A5912D /* LoginViewController.swift */,
+				DF6F3ED128A6786B00A2D052 /* BoardViewController */,
 				DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */,
+				DF6F3ED228A7269500A2D052 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF6F3ED328A7269500A2D052 /* DetailViewController.swift in Sources */,
 				DF6F3ECB28A6119B00A2D052 /* BoardTableViewController.swift in Sources */,
 				DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */,
 				DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */,
