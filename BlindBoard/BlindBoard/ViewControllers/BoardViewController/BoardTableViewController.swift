@@ -15,7 +15,7 @@ struct Number {
 class BoardTableViewController: UITableViewController {
     
     //MARK: - properties
-    private let arr: [Number] = [Number(name: "1"), Number(name: "2"), Number(name: "3")]
+    private let arr: [Number] = [Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3")]
     
     struct BoardTableCell {
         static let cellName = "BoardTableViewCell"

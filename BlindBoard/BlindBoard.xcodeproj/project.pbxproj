@@ -18,6 +18,7 @@
 		DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */; };
 		DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */; };
 		DF6F3ED328A7269500A2D052 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED228A7269500A2D052 /* DetailViewController.swift */; };
+		DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED528A75D0B00A2D052 /* CommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
 		DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBoardViewController.swift; sourceTree = "<group>"; };
 		DF6F3ED228A7269500A2D052 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DF6F3ED528A75D0B00A2D052 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,8 +86,8 @@
 			children = (
 				DF050B2C28A4078200A5912D /* LoginViewController.swift */,
 				DF6F3ED128A6786B00A2D052 /* BoardViewController */,
+				DF6F3ED428A75CD800A2D052 /* DeatailViewController */,
 				DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */,
-				DF6F3ED228A7269500A2D052 /* DetailViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -128,6 +130,15 @@
 				DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */,
 			);
 			path = BoardViewController;
+			sourceTree = "<group>";
+		};
+		DF6F3ED428A75CD800A2D052 /* DeatailViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DF6F3ED228A7269500A2D052 /* DetailViewController.swift */,
+				DF6F3ED528A75D0B00A2D052 /* CommentTableViewCell.swift */,
+			);
+			path = DeatailViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +218,7 @@
 				DF050B2D28A4078200A5912D /* LoginViewController.swift in Sources */,
 				DF050B2928A4078200A5912D /* AppDelegate.swift in Sources */,
 				DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */,
+				DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */,
 				DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */,
 				DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */,
 			);
