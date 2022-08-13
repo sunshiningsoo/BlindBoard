@@ -64,7 +64,6 @@ class LoginViewController: UIViewController {
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         render()
     }
     

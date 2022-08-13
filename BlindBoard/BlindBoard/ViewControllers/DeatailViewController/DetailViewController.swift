@@ -59,7 +59,6 @@ class DetailViewController: UIViewController {
         commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: "CommentTableViewCell")
         
         // navigation bar setting
-        navigationItem.largeTitleDisplayMode = .never
         title = "익명의 글"
     }
     
@@ -67,8 +66,6 @@ class DetailViewController: UIViewController {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
         print("Detail -->>> \(number?.name ?? "")")
-        
-        
     }
     
     private func render() {

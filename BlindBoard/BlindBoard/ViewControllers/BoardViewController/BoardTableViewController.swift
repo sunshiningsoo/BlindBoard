@@ -22,28 +22,44 @@ class BoardTableViewController: UITableViewController {
     }
 
 
+    @objc func sl() {
+        // update the data from firebase
+        
+        DispatchQueue.main.async {
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(sl), for: .valueChanged)
+                
+        // navigation back bar hide
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(writing))
         self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableCell.cellName)
+        title = "Bline Board⌨️"
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
         
-        // navigation Setting
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
-        title = "Bline Board⌨️"
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+    }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        title = ""
+//        title = ""
     }
     
     @objc
@@ -73,6 +89,5 @@ class BoardTableViewController: UITableViewController {
 
         navigationController?.pushViewController(DetailViewController(number: arr[indexPath.item]), animated: true)
     }
-    
     
 }
