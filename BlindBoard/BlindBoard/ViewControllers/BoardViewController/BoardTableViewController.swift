@@ -15,7 +15,7 @@ struct Number {
 class BoardTableViewController: UITableViewController {
     
     //MARK: - properties
-    private let arr: [Number] = [Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3")]
+    private let arr: [Number] = [Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"),Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3")]
     
     struct BoardTableCell {
         static let cellName = "BoardTableViewCell"
@@ -26,7 +26,6 @@ class BoardTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // navigation Setting
         navigationItem.leftBarButtonItem = UIBarButtonItem()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(writing))
         self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableCell.cellName)
@@ -35,7 +34,16 @@ class BoardTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
+        
+        // navigation Setting
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
         title = "Bline Board⌨️"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        title = ""
     }
     
     @objc
@@ -62,6 +70,7 @@ class BoardTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 상세 페이지로 넘어가기
+
         navigationController?.pushViewController(DetailViewController(number: arr[indexPath.item]), animated: true)
     }
     

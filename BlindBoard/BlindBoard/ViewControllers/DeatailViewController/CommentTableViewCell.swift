@@ -9,10 +9,15 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
     
+    private let commentLabel: UILabel = {
+        let comment = UILabel()
+        comment.numberOfLines = 0
+        return comment
+    }()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -23,14 +28,21 @@ class CommentTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        render()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func render() {
+        self.addSubview(commentLabel)
+        commentLabel.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 10, paddingLeft: 24, paddingBottom: 10, paddingRight: 24)
+    }
+    
     func setupCell(comment: Comment) {
-        self.backgroundColor = .blue
+        self.backgroundColor = .systemBackground
+        commentLabel.text = comment.comment
         
     }
 

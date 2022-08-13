@@ -13,7 +13,7 @@ struct Comment {
 
 class DetailViewController: UIViewController {
     
-    let arr: [Comment] = [Comment(comment: "sdfasdfasd"), Comment(comment: "asdfasdfasdfasfsadfsdfasd")]
+    let arr: [Comment] = [Comment(comment: "너의 의견에 동의하는바야"), Comment(comment: "너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야")]
     
     //MARK: - properties
     private var number: Number?
@@ -57,12 +57,18 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         render()
         commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: "CommentTableViewCell")
+        
+        // navigation bar setting
+        navigationItem.largeTitleDisplayMode = .never
+        title = "익명의 글"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
         print("Detail -->>> \(number?.name ?? "")")
+        
+        
     }
     
     private func render() {
@@ -102,7 +108,7 @@ extension DetailViewController: UITableViewDelegate {
 //MARK: - tableView dataSource
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print(arr[indexPath.item].comment)
     }
     
 }
