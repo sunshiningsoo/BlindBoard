@@ -12,11 +12,13 @@ struct Number {
     let name: String
 }
 
+
 class BoardTableViewController: UITableViewController {
     
     //MARK: - properties
-    private let arr: [Number] = [Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"),Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3")]
-    
+    private var arr: [Number] = [Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"),Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3")]
+
+    let vc = AddBoardViewController()
     struct BoardTableCell {
         static let cellName = "BoardTableViewCell"
     }
@@ -42,13 +44,13 @@ class BoardTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(writing))
         self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableCell.cellName)
         title = "Bline Board⌨️"
-
+        
+        vc.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,7 +66,7 @@ class BoardTableViewController: UITableViewController {
     
     @objc
     func writing() {
-        present(AddBoardViewController(), animated: true)
+        present(vc, animated: true)
     }
 
     //MARK: - datasource, delegate
@@ -86,8 +88,17 @@ class BoardTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 상세 페이지로 넘어가기
-
         navigationController?.pushViewController(DetailViewController(number: arr[indexPath.item]), animated: true)
     }
     
+    
+}
+
+extension BoardTableViewController: AddDelegate {
+    func addContent(number: Number) {
+        self.arr.insert(number, at: 0)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }
