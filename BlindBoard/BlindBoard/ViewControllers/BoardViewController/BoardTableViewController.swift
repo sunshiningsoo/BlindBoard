@@ -9,14 +9,14 @@ import UIKit
 
 
 struct Number {
-    let name: String
+    let title: String
+    let content: String
 }
-
 
 class BoardTableViewController: UITableViewController {
     
     //MARK: - properties
-    private var arr: [Number] = [Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"),Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3"), Number(name: "This is real story about my life"), Number(name: "2"), Number(name: "3")]
+    private var arr: [Number] = [Number(title: "123", content: "1234"), Number(title: "asdfs", content: "Asdfasdf"), Number(title: "123", content: "1234"), Number(title: "asdfs", content: "Asdfasdf"), Number(title: "123", content: "1234"), Number(title: "asdfs", content: "Asdfasdf"), Number(title: "123", content: "1234"), Number(title: "asdfs", content: "Asdfasdf")]
 
     let vc = AddBoardViewController()
     struct BoardTableCell {
@@ -26,7 +26,6 @@ class BoardTableViewController: UITableViewController {
 
     @objc func sl() {
         // update the data from firebase
-        
         DispatchQueue.main.async {
             self.refreshControl?.endRefreshing()
         }
@@ -91,14 +90,15 @@ class BoardTableViewController: UITableViewController {
         navigationController?.pushViewController(DetailViewController(number: arr[indexPath.item]), animated: true)
     }
     
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
     
 }
 
 extension BoardTableViewController: AddDelegate {
     func addContent(number: Number) {
         self.arr.insert(number, at: 0)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
+        self.tableView.reloadData()
     }
 }

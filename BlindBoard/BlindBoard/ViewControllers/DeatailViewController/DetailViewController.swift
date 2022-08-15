@@ -20,13 +20,13 @@ class DetailViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let title = UILabel()
-        title.text = number?.name
+        title.text = number?.title
         return title
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let title = UILabel()
-        title.text = number?.name
+        title.text = number?.content
         return title
     }()
     
@@ -39,7 +39,12 @@ class DetailViewController: UIViewController {
     
     private let contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = .red
+        view.backgroundColor = .systemBackground
+        view.layer.cornerRadius = 10
+        view.layer.masksToBounds = false
+        view.layer.shadowRadius = 5
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowOpacity = 0.5
         return view
     }()
     
@@ -65,12 +70,11 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
-        print("Detail -->>> \(number?.name ?? "")")
     }
     
     private func render() {
         view.addSubview(contentView)
-        contentView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 0)
+        contentView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingRight: 10)
         
         view.addSubview(titleLabel)
         titleLabel.anchor(top:contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 30, paddingLeft: 24, paddingRight: 24)
@@ -79,7 +83,7 @@ class DetailViewController: UIViewController {
         descriptionLabel.anchor(top: titleLabel.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 10, paddingLeft: 24, paddingBottom: 20, paddingRight: 24)
         
         view.addSubview(commentTableView)
-        commentTableView.anchor(top: contentView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0)
+        commentTableView.anchor(top: contentView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10)
     }
 
 }

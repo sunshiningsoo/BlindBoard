@@ -18,7 +18,6 @@ class BoardTableViewCell: UITableViewCell {
     private let content: UILabel = {
         let content = UILabel()
         content.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        content.text = "asdfasdfaljshdflkajshdflkjahsdlkfjhasldkfhalksdfhlaksjdhf"
         content.font = UIFont.systemFont(ofSize: 14)
         return content
     }()
@@ -54,7 +53,8 @@ class BoardTableViewCell: UITableViewCell {
     }
     
     func set(_ label: Number) {
-        titleLabel.text = label.name
+        titleLabel.text = label.title
+        content.text = label.content
     }
     
 

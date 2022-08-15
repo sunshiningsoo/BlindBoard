@@ -25,8 +25,14 @@ class AddBoardViewController: UIViewController {
     
     private let contentTitle: UITextField = {
         let text = UITextField()
-        text.placeholder = "asdf"
+        text.placeholder = "Write your Title"
         return text
+    }()
+    
+    private let content: UITextField = {
+        let content = UITextField()
+        content.placeholder = "write your content"
+        return content
     }()
 
     override func viewDidLoad() {
@@ -42,7 +48,7 @@ class AddBoardViewController: UIViewController {
     
     @objc
     func saveBoard() {
-        delegate?.addContent(number: Number(name: contentTitle.text ?? "no item"))
+        delegate?.addContent(number: Number(title: contentTitle.text ?? "no item", content: content.text ?? "no content"))
         self.dismiss(animated: true)
     }
     
@@ -50,8 +56,11 @@ class AddBoardViewController: UIViewController {
         view.addSubview(contentTitle)
         contentTitle.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 24, paddingRight: 24, height: 50)
         
+        view.addSubview(content)
+        content.anchor(top: contentTitle.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 30, paddingLeft: 24, paddingRight: 24, height: 50)
+        
         view.addSubview(save)
-        save.anchor(top:contentTitle.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 24, paddingRight: 24, height: 50)
+        save.anchor(top: content.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 24, paddingRight: 24, height: 50)
     }
     
 
