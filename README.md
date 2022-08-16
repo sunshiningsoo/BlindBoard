@@ -12,6 +12,6 @@ Making a board App
 Focus on making an App that people actually download and use!
 
 ## :sparkles: Skills & Tech Stack
-UIKit, FireBase
+UIKit, FireBase(Pod), Pod
 
 
