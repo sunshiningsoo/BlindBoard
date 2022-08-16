@@ -6,45 +6,37 @@
 //
 
 import UIKit
-
-
-struct Number {
-    let title: String
-    let content: String
-}
+import FirebaseFirestore
 
 class BoardTableViewController: UITableViewController {
     
-    //MARK: - properties
-    private var arr: [Number] = [Number(title: "123", content: "1234"), Number(title: "asdfs", content: "Asdfasdf"), Number(title: "123", content: "1234"), Number(title: "asdfs", content: "Asdfasdf"), Number(title: "123", content: "1234"), Number(title: "asdfs", content: "Asdfasdf"), Number(title: "123", content: "1234"), Number(title: "asdfs", content: "Asdfasdf")]
+    let db = Firestore.firestore()
 
-    let vc = AddBoardViewController()
+    //MARK: - properties
+    private var arr: [Board] = []
+
+    let AddBoardViewControl = AddBoardViewController()
     struct BoardTableCell {
         static let cellName = "BoardTableViewCell"
     }
 
 
-    @objc func sl() {
-        // update the data from firebase
-        DispatchQueue.main.async {
-            self.refreshControl?.endRefreshing()
-        }
-    }
     
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(sl), for: .valueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(updateData), for: .valueChanged)
                 
         // navigation back bar hide
         navigationItem.leftBarButtonItem = nil
         navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(writing))
         self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableCell.cellName)
-        title = "Bline Board⌨️"
+        title = "Blind Board⌨️"
         
-        vc.delegate = self
+        loadData()
+        AddBoardViewControl.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,20 +44,38 @@ class BoardTableViewController: UITableViewController {
         view.backgroundColor = .systemBackground
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        title = ""
+    @objc
+    func writing() {
+        present(AddBoardViewControl, animated: true)
     }
     
     @objc
-    func writing() {
-        present(vc, animated: true)
+    func updateData() {
+        // update the data from firebase
+        DispatchQueue.main.async {
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    func loadData() {
+        db.collection(FirebaseConstant.collectiontemp).order(by: "writtenTime", descending: true).addSnapshotListener { snapshot, error in
+            if let error = error {
+                print("Load ERR!!! \(error)")
+            }
+            self.arr = []
+            guard let snapshot = snapshot else { return print("snapshot ERR!!") }
+            for shot in snapshot.documents {
+                let sh = shot.data()
+                if let title = sh["testTitle"] as? String, let content = sh["textContent"] as? String {
+                    let tempBoard = Board(title: title, content: content)
+                    self.arr.append(tempBoard)
+                }
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+            
+        }
     }
 
     //MARK: - datasource, delegate
@@ -97,8 +107,14 @@ class BoardTableViewController: UITableViewController {
 }
 
 extension BoardTableViewController: AddDelegate {
-    func addContent(number: Number) {
-        self.arr.insert(number, at: 0)
+    func addContent(board: Board) {
+        db.collection(FirebaseConstant.collectiontemp).addDocument(data: ["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format()]) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Saved Succesfully")
+            }
+        }
         self.tableView.reloadData()
     }
 }

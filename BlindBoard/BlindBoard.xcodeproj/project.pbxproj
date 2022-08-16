@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E56D74FA654BD087394A6BD /* Pods_BlindBoard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A6D7ED8E4E7AA23A008D37 /* Pods_BlindBoard.framework */; };
 		DF050B2928A4078200A5912D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF050B2828A4078200A5912D /* AppDelegate.swift */; };
 		DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF050B2A28A4078200A5912D /* SceneDelegate.swift */; };
 		DF050B2D28A4078200A5912D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF050B2C28A4078200A5912D /* LoginViewController.swift */; };
@@ -19,9 +20,16 @@
 		DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */; };
 		DF6F3ED328A7269500A2D052 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED228A7269500A2D052 /* DetailViewController.swift */; };
 		DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED528A75D0B00A2D052 /* CommentTableViewCell.swift */; };
+		DF6F3ED828AA797000A2D052 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF6F3ED728AA797000A2D052 /* GoogleService-Info.plist */; };
+		DF6F3EDA28AA7D3F00A2D052 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED928AA7D3F00A2D052 /* Board.swift */; };
+		DF6F3EDC28AA7D9F00A2D052 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */; };
+		DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08D9BCC151734899E258FAE4 /* Pods-BlindBoard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindBoard.debug.xcconfig"; path = "Target Support Files/Pods-BlindBoard/Pods-BlindBoard.debug.xcconfig"; sourceTree = "<group>"; };
+		61A6D7ED8E4E7AA23A008D37 /* Pods_BlindBoard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlindBoard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A762FA8EDBE0F75023E7E4D4 /* Pods-BlindBoard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlindBoard.release.xcconfig"; path = "Target Support Files/Pods-BlindBoard/Pods-BlindBoard.release.xcconfig"; sourceTree = "<group>"; };
 		DF050B2528A4078200A5912D /* BlindBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlindBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF050B2828A4078200A5912D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DF050B2A28A4078200A5912D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +44,10 @@
 		DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBoardViewController.swift; sourceTree = "<group>"; };
 		DF6F3ED228A7269500A2D052 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DF6F3ED528A75D0B00A2D052 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		DF6F3ED728AA797000A2D052 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DF6F3ED928AA7D3F00A2D052 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +55,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E56D74FA654BD087394A6BD /* Pods_BlindBoard.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		233D54ED9B0C08C467526A02 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				08D9BCC151734899E258FAE4 /* Pods-BlindBoard.debug.xcconfig */,
+				A762FA8EDBE0F75023E7E4D4 /* Pods-BlindBoard.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4AD07BCC21F98D9CBF8FE683 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61A6D7ED8E4E7AA23A008D37 /* Pods_BlindBoard.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DF050B1C28A4078200A5912D = {
 			isa = PBXGroup;
 			children = (
 				DF050B2728A4078200A5912D /* BlindBoard */,
 				DF050B2628A4078200A5912D /* Products */,
+				233D54ED9B0C08C467526A02 /* Pods */,
+				4AD07BCC21F98D9CBF8FE683 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +100,7 @@
 		DF050B2728A4078200A5912D /* BlindBoard */ = {
 			isa = PBXGroup;
 			children = (
+				DF6F3ED728AA797000A2D052 /* GoogleService-Info.plist */,
 				DF050B3F28A40A2500A5912D /* Utils */,
 				DF050B3E28A4098A00A5912D /* Views */,
 				DF050B3D28A4097E00A5912D /* Models */,
@@ -95,6 +128,8 @@
 		DF050B3D28A4097E00A5912D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				DF6F3ED928AA7D3F00A2D052 /* Board.swift */,
+				DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -110,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				DF050B4028A40A2B00A5912D /* Extensions */,
+				DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -148,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DF050B3928A4078300A5912D /* Build configuration list for PBXNativeTarget "BlindBoard" */;
 			buildPhases = (
+				72AE2C36C803670ADB9ED61C /* [CP] Check Pods Manifest.lock */,
 				DF050B2128A4078200A5912D /* Sources */,
 				DF050B2228A4078200A5912D /* Frameworks */,
 				DF050B2328A4078200A5912D /* Resources */,
+				7CB4AF4F4EB3DE533C8CF8D0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -201,10 +239,53 @@
 			files = (
 				DF050B3528A4078300A5912D /* LaunchScreen.storyboard in Resources */,
 				DF050B3228A4078300A5912D /* Assets.xcassets in Resources */,
+				DF6F3ED828AA797000A2D052 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		72AE2C36C803670ADB9ED61C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BlindBoard-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7CB4AF4F4EB3DE533C8CF8D0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlindBoard/Pods-BlindBoard-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BlindBoard/Pods-BlindBoard-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BlindBoard/Pods-BlindBoard-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DF050B2128A4078200A5912D /* Sources */ = {
@@ -215,10 +296,13 @@
 				DF6F3ECB28A6119B00A2D052 /* BoardTableViewController.swift in Sources */,
 				DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */,
 				DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */,
+				DF6F3EDA28AA7D3F00A2D052 /* Board.swift in Sources */,
 				DF050B2D28A4078200A5912D /* LoginViewController.swift in Sources */,
 				DF050B2928A4078200A5912D /* AppDelegate.swift in Sources */,
+				DF6F3EDC28AA7D9F00A2D052 /* Comment.swift in Sources */,
 				DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */,
 				DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */,
+				DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */,
 				DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */,
 				DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */,
 			);
@@ -354,11 +438,13 @@
 		};
 		DF050B3A28A4078300A5912D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08D9BCC151734899E258FAE4 /* Pods-BlindBoard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DF85MB57QP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlindBoard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -380,11 +466,13 @@
 		};
 		DF050B3B28A4078300A5912D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A762FA8EDBE0F75023E7E4D4 /* Pods-BlindBoard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = DF85MB57QP;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BlindBoard/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

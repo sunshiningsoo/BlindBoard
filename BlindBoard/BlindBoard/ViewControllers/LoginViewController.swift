@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
         button.setTitle("로그인", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(goToBoardView), for: .touchUpInside)
+        button.addTarget(self, action: #selector(checkValidUser), for: .touchUpInside)
         return button
     }()
     
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
     }()
     
     @objc
-    func goToBoardView() {
+    func checkValidUser() {
         let vc = BoardTableViewController()
         navigationController?.pushViewController(vc, animated: true)
         

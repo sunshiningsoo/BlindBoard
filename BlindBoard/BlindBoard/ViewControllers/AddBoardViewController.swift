@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddDelegate {
-    func addContent(number: Number)
+    func addContent(board: Board)
 }
 
 class AddBoardViewController: UIViewController {
@@ -19,6 +19,7 @@ class AddBoardViewController: UIViewController {
         save.setTitle("Save", for: .normal)
         save.tintColor = .white
         save.backgroundColor = .systemBlue
+        save.layer.cornerRadius = 5
         save.addTarget(self, action: #selector(saveBoard), for: .touchUpInside)
         return save
     }()
@@ -26,18 +27,21 @@ class AddBoardViewController: UIViewController {
     private let contentTitle: UITextField = {
         let text = UITextField()
         text.placeholder = "Write your Title"
+        text.clearButtonMode = .whileEditing
+        text.addLeftPadding()
         return text
     }()
     
     private let content: UITextField = {
         let content = UITextField()
         content.placeholder = "write your content"
+        content.clearButtonMode = .whileEditing
+        content.addLeftPadding()
         return content
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         render()
     }
     
@@ -48,8 +52,17 @@ class AddBoardViewController: UIViewController {
     
     @objc
     func saveBoard() {
-        delegate?.addContent(number: Number(title: contentTitle.text ?? "no item", content: content.text ?? "no content"))
-        self.dismiss(animated: true)
+        if contentTitle.text == "" || content.text == "" {
+            let alert = UIAlertController(title: "No content!", message: "You have to fill the content", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel))
+            present(alert, animated: true)
+        } else {
+            delegate?.addContent(board: Board(title: contentTitle.text ?? "no item", content: content.text ?? "no content"))
+            self.dismiss(animated: true)
+            contentTitle.text = ""
+            content.text = ""
+        }
+        
     }
     
     private func render() {

@@ -7,16 +7,12 @@
 
 import UIKit
 
-struct Comment {
-    let comment: String
-}
-
 class DetailViewController: UIViewController {
     
-    let arr: [Comment] = [Comment(comment: "너의 의견에 동의하는바야"), Comment(comment: "너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야")]
+    private let arr: [Comment] = [Comment(comment: "너의 의견에 동의하는바야"), Comment(comment: "너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야")]
     
     //MARK: - properties
-    private var number: Number?
+    private var number: Board?
     
     private lazy var titleLabel: UILabel = {
         let title = UILabel()
@@ -41,15 +37,13 @@ class DetailViewController: UIViewController {
         let view = UIView()
         view.backgroundColor = .systemBackground
         view.layer.cornerRadius = 10
-        view.layer.masksToBounds = false
-        view.layer.shadowRadius = 5
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowOpacity = 0.5
+        view.layer.borderColor = UIColor.systemBlue.cgColor
+        view.layer.borderWidth = 1
         return view
     }()
     
     //MARK: - init
-    init(number: Number){
+    init(number: Board){
         super.init(nibName: nil, bundle: nil)
         self.number = number
     }
