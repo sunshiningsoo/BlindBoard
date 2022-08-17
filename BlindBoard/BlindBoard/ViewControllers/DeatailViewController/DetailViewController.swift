@@ -6,10 +6,15 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class DetailViewController: UIViewController {
     
-    private let arr: [Comment] = [Comment(comment: "너의 의견에 동의하는바야"), Comment(comment: "너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야")]
+    private let arr: [Comment] = []
+    
+//    Comment(comment: "너의 의견에 동의하는바야"), Comment(comment: "너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야")
+    
+    let db = Firestore.firestore()
     
     //MARK: - properties
     private var number: Board?
@@ -42,10 +47,24 @@ class DetailViewController: UIViewController {
         return view
     }()
     
+    private lazy var commentButton: UIButton = {
+        let comment = UIButton()
+        comment.setTitle("Comment", for: .normal)
+        comment.addTarget(self, action: #selector(addComment), for: .touchUpInside)
+        comment.tintColor = .white
+        comment.backgroundColor = .systemBlue
+        return comment
+    }()
+    @objc
+    func addComment() {
+        db.collection(FirebaseConstant.collectiontemp).document(<#T##documentPath: String##String#>)
+    }
+    
     //MARK: - init
     init(number: Board){
         super.init(nibName: nil, bundle: nil)
         self.number = number
+        reloadComment()
     }
     
     required init?(coder: NSCoder) {
@@ -55,7 +74,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         render()
-        commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: "CommentTableViewCell")
+        commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.cellIdentifier)
         
         // navigation bar setting
         title = "익명의 글"
@@ -78,6 +97,20 @@ class DetailViewController: UIViewController {
         
         view.addSubview(commentTableView)
         commentTableView.anchor(top: contentView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10)
+        
+        view.addSubview(commentButton)
+        commentButton.anchor(top: commentTableView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 30, paddingLeft: 24, paddingRight: 24)
+    }
+    
+    private func reloadComment() {
+        db.collection(FirebaseConstant.collectiontemp).document(number!.title).addSnapshotListener { snapshot, error in
+            guard let error = error else { return print("\(error?.localizedDescription)") }
+            guard let snapshot = snapshot else { return print("Snapshot err! \(snapshot)") }
+//            let data = snapshot.data()!
+//            for data in data["comments"] {
+//
+//            }
+        }
     }
 
 }
@@ -85,7 +118,7 @@ class DetailViewController: UIViewController {
 //MARK: - tableView delegate
 extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.cellIdentifier, for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
         cell.setupCell(comment: arr[indexPath.item])
         return cell
     }

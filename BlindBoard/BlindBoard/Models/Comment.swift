@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct Comment {
+struct Comment: Codable {
     let comment: String
+    var commentMadeDate: String = Date().ISO8601Format()
 }

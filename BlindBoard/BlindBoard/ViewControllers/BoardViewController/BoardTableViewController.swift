@@ -16,11 +16,6 @@ class BoardTableViewController: UITableViewController {
     private var arr: [Board] = []
 
     let AddBoardViewControl = AddBoardViewController()
-    struct BoardTableCell {
-        static let cellName = "BoardTableViewCell"
-    }
-
-
     
     //MARK: - init
     override func viewDidLoad() {
@@ -32,7 +27,7 @@ class BoardTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = nil
         navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(writing))
-        self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableCell.cellName)
+        self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableViewCell.cellIdentifier)
         title = "Blind Board⌨️"
         
         loadData()
@@ -67,7 +62,7 @@ class BoardTableViewController: UITableViewController {
             for shot in snapshot.documents {
                 let sh = shot.data()
                 if let title = sh["testTitle"] as? String, let content = sh["textContent"] as? String {
-                    let tempBoard = Board(title: title, content: content)
+                    let tempBoard = Board(title: title, content: content, comments: [])
                     self.arr.append(tempBoard)
                 }
                 DispatchQueue.main.async {
@@ -89,7 +84,7 @@ class BoardTableViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BoardTableCell.cellName, for: indexPath) as? BoardTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BoardTableViewCell.cellIdentifier, for: indexPath) as? BoardTableViewCell else { return UITableViewCell() }
         cell.set(arr[indexPath.item])
         
         return cell
@@ -108,7 +103,7 @@ class BoardTableViewController: UITableViewController {
 
 extension BoardTableViewController: AddDelegate {
     func addContent(board: Board) {
-        db.collection(FirebaseConstant.collectiontemp).addDocument(data: ["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format()]) { error in
+        db.collection(FirebaseConstant.collectiontemp).addDocument(data: ["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "comments": board.comments]) { error in
             if let error = error {
                 print(error.localizedDescription)
             } else {

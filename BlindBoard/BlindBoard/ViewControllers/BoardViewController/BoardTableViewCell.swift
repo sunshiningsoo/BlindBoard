@@ -9,6 +9,8 @@ import UIKit
 
 class BoardTableViewCell: UITableViewCell {
     
+    static let cellIdentifier = "BoardTableViewCell"
+
     //MARK: - properties
     private let titleLabel: UILabel = {
         let title = UILabel()

@@ -9,6 +9,8 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
     
+    static let cellIdentifier = "CommentTableViewCell"
+    
     private let commentLabel: UILabel = {
         let comment = UILabel()
         comment.numberOfLines = 0

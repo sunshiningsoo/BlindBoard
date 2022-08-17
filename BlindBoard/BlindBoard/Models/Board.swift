@@ -10,4 +10,5 @@ import Foundation
 struct Board: Codable {
     let title: String
     let content: String
+    var comments: [Comment] = []
 }
