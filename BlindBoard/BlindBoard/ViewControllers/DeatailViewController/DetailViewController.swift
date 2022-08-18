@@ -57,7 +57,7 @@ class DetailViewController: UIViewController {
     }()
     @objc
     func addComment() {
-        db.collection(FirebaseConstant.collectiontemp).document(<#T##documentPath: String##String#>)
+        db.collection(FirebaseConstant.collectiontemp)
     }
     
     //MARK: - init
@@ -99,7 +99,7 @@ class DetailViewController: UIViewController {
         commentTableView.anchor(top: contentView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10)
         
         view.addSubview(commentButton)
-        commentButton.anchor(top: commentTableView.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 30, paddingLeft: 24, paddingRight: 24)
+        commentButton.anchor(top: commentTableView.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 30, paddingLeft: 24, paddingRight: 24)
     }
     
     private func reloadComment() {
