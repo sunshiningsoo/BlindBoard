@@ -8,6 +8,6 @@
 import Foundation
 
 struct Comment: Codable {
-    let comment: String
+    var comment: String = "testcomment"
     var commentMadeDate: String = Date().ISO8601Format()
 }
