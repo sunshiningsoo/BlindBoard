@@ -23,13 +23,7 @@ class BoardTableViewCell: UITableViewCell {
         content.font = UIFont.systemFont(ofSize: 14)
         return content
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        
-    }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

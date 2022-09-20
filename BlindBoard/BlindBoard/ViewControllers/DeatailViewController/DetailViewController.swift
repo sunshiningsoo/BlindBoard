@@ -10,24 +10,24 @@ import FirebaseFirestore
 
 class DetailViewController: UIViewController {
     
-    private let arr: [Comment] = []
+    private var arr: [Comment] = []
     
 //    Comment(comment: "너의 의견에 동의하는바야"), Comment(comment: "너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야")
     
     let db = Firestore.firestore()
     
     //MARK: - properties
-    private var number: Board?
+    private var number: Board
     
     private lazy var titleLabel: UILabel = {
         let title = UILabel()
-        title.text = number?.title
+        title.text = number.title
         return title
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let title = UILabel()
-        title.text = number?.content
+        title.text = number.content
         return title
     }()
     
@@ -55,16 +55,11 @@ class DetailViewController: UIViewController {
         comment.backgroundColor = .systemBlue
         return comment
     }()
-    @objc
-    func addComment() {
-        db.collection(FirebaseConstant.collectiontemp)
-    }
     
-    //MARK: - init
+    //MARK: - LifeCycle
     init(number: Board){
-        super.init(nibName: nil, bundle: nil)
         self.number = number
-        reloadComment()
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -75,6 +70,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         render()
         commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.cellIdentifier)
+        fetchComment()
         
         // navigation bar setting
         title = "익명의 글"
@@ -85,6 +81,13 @@ class DetailViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
+    // MARK: - Actions
+    
+    @objc func addComment() {
+
+    }
+    
+    // MARK: - Helpers
     private func render() {
         view.addSubview(contentView)
         contentView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingRight: 10)
@@ -102,17 +105,30 @@ class DetailViewController: UIViewController {
         commentButton.anchor(top: commentTableView.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 30, paddingLeft: 24, paddingRight: 24)
     }
     
-    private func reloadComment() {
-        db.collection(FirebaseConstant.collectiontemp).document(number!.title).addSnapshotListener { snapshot, error in
-            guard let error = error else { return print("\(error?.localizedDescription)") }
-            guard let snapshot = snapshot else { return print("Snapshot err! \(snapshot)") }
-//            let data = snapshot.data()!
-//            for data in data["comments"] {
-//
-//            }
+    private func fetchComment() {
+        reloadComment { [weak self] board in
+            self?.number = board
+            self?.arr = [Comment(comment: board.comments.first ?? "")]
+            print(board)
+            print(self?.arr.count)
+            DispatchQueue.main.async {
+                self?.commentTableView.reloadData()
+            }
+            
         }
     }
-
+    
+    func reloadComment(completion: @escaping(Board) -> Void) {
+        print(number.uid)
+        db.collection(FirebaseConstant.collectiontemp).document(number.uid).getDocument(completion: { snapshot, error in
+            if let snapshot = snapshot {
+                guard let dic = snapshot.data() else { return print("SNAPSHOT ERR") }
+                let board = Board(dictionary: dic)
+                completion(board)
+            }
+        })
+    }
+    
 }
 
 //MARK: - tableView delegate

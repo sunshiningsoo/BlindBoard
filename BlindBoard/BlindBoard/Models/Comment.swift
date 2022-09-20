@@ -10,4 +10,8 @@ import Foundation
 struct Comment: Codable {
     var comment: String = "testcomment"
     var commentMadeDate: String = Date().ISO8601Format()
+    
+    init(comment: String) {
+        self.comment = comment
+    }
 }

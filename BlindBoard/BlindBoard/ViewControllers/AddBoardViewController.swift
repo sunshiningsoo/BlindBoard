@@ -12,6 +12,10 @@ protocol AddDelegate {
 }
 
 class AddBoardViewController: UIViewController {
+    
+    
+    // MARK: - Properties
+    
     var delegate: AddDelegate?
     
     private lazy var save: UIButton = {
@@ -40,6 +44,7 @@ class AddBoardViewController: UIViewController {
         return content
     }()
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         render()
@@ -50,14 +55,14 @@ class AddBoardViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
-    @objc
-    func saveBoard() {
+    // MARK: - Actions
+    @objc func saveBoard() {
         if contentTitle.text == "" || content.text == "" {
             let alert = UIAlertController(title: "No content!", message: "You have to fill the content", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .cancel))
             present(alert, animated: true)
         } else {
-            delegate?.addContent(board: Board(title: contentTitle.text ?? "no item", content: content.text ?? "no content"))
+            delegate?.addContent(board: Board(title: contentTitle.text ?? "no item", content: content.text ?? "no content", comments: ["none now"], uid: UUID().uuidString))
             self.dismiss(animated: true)
             contentTitle.text = ""
             content.text = ""
@@ -65,6 +70,7 @@ class AddBoardViewController: UIViewController {
         
     }
     
+    // MARK: - Helpers
     private func render() {
         view.addSubview(contentTitle)
         contentTitle.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 24, paddingRight: 24, height: 50)

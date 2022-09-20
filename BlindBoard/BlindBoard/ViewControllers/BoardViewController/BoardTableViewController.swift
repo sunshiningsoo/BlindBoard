@@ -39,6 +39,7 @@ class BoardTableViewController: UITableViewController {
         view.backgroundColor = .systemBackground
     }
     
+    // MARK: - Actions
     @objc
     func writing() {
         present(AddBoardViewControl, animated: true)
@@ -52,6 +53,7 @@ class BoardTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Helpers
     func loadData() {
         db.collection(FirebaseConstant.collectiontemp).order(by: "writtenTime", descending: true).addSnapshotListener { snapshot, error in
             if let error = error {
@@ -61,8 +63,8 @@ class BoardTableViewController: UITableViewController {
             guard let snapshot = snapshot else { return print("snapshot ERR!!") }
             for shot in snapshot.documents {
                 let sh = shot.data()
-                if let title = sh["testTitle"] as? String, let content = sh["textContent"] as? String {
-                    let tempBoard = Board(title: title, content: content, comments: [])
+                if let title = sh["testTitle"] as? String, let content = sh["textContent"] as? String, let comments = sh["comments"] as? [String], let uid = sh["uid"] as? String {
+                    let tempBoard = Board(title: title, content: content, comments: comments, uid: uid)
                     self.arr.append(tempBoard)
                 }
                 DispatchQueue.main.async {
@@ -101,15 +103,17 @@ class BoardTableViewController: UITableViewController {
     
 }
 
+// MARK: - BoardTableViewController AddDelegate
 extension BoardTableViewController: AddDelegate {
     func addContent(board: Board) {
-        db.collection(FirebaseConstant.collectiontemp).addDocument(data: ["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "comments": board.comments]) { error in
-            if let error = error {
-                print(error.localizedDescription)
-            } else {
-                print("Saved Succesfully")
-            }
-        }
-        self.tableView.reloadData()
+        db.collection(FirebaseConstant.collectiontemp).document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "comments": board.comments, "uid": board.uid])
+        
+//        db.collection(FirebaseConstant.collectiontemp).addDocument(data: ["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "comments": board.comments, "uid": board.uid]) { error in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            } else {
+//                print("Saved Succesfully")
+//            }
+//        }
     }
 }
