@@ -10,24 +10,19 @@ import FirebaseFirestore
 
 class DetailViewController: UIViewController {
     
-    private var arr: [Comment] = []
-    
-//    Comment(comment: "너의 의견에 동의하는바야"), Comment(comment: "너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야너의 의견에 동의하는바야")
-    
-    let db = Firestore.firestore()
-    
     //MARK: - properties
-    private var number: Board
+    private var arr: [Comment] = []
+    private var board: Board
     
     private lazy var titleLabel: UILabel = {
         let title = UILabel()
-        title.text = number.title
+        title.text = board.title
         return title
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let title = UILabel()
-        title.text = number.content
+        title.text = board.content
         return title
     }()
     
@@ -53,12 +48,14 @@ class DetailViewController: UIViewController {
         comment.addTarget(self, action: #selector(addComment), for: .touchUpInside)
         comment.tintColor = .white
         comment.backgroundColor = .systemBlue
+        comment.layer.cornerRadius = 15
+        
         return comment
     }()
     
     //MARK: - LifeCycle
-    init(number: Board){
-        self.number = number
+    init(board: Board){
+        self.board = board
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -82,8 +79,10 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
     @objc func addComment() {
+        let addCommentViewController = AddCommentViewController(board: board)
+        addCommentViewController.commentDelegate = self
+        present(addCommentViewController, animated: true)
 
     }
     
@@ -102,25 +101,28 @@ class DetailViewController: UIViewController {
         commentTableView.anchor(top: contentView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10)
         
         view.addSubview(commentButton)
-        commentButton.anchor(top: commentTableView.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 30, paddingLeft: 24, paddingRight: 24)
+        commentButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 30, paddingBottom: 0, paddingRight: 30, height: 50)
+        
     }
     
     private func fetchComment() {
         reloadComment { [weak self] board in
-            self?.number = board
-            self?.arr = [Comment(comment: board.comments.first ?? "")]
-            print(board)
-            print(self?.arr.count)
+            guard let self = self else { return }
+            self.board = board
+            if board.comments.count == 2 {
+                self.arr = [Comment(comment: board.comments.first ?? ""), Comment(comment: board.comments[1])]
+            } else {
+                self.arr = [Comment(comment: board.comments.first ?? "")]
+            }
             DispatchQueue.main.async {
-                self?.commentTableView.reloadData()
+                self.commentTableView.reloadData()
             }
             
         }
     }
     
     func reloadComment(completion: @escaping(Board) -> Void) {
-        print(number.uid)
-        db.collection(FirebaseConstant.collectiontemp).document(number.uid).getDocument(completion: { snapshot, error in
+        FirebaseConstant.FIRESTORE.document(board.uid).getDocument(completion: { snapshot, error in
             if let snapshot = snapshot {
                 guard let dic = snapshot.data() else { return print("SNAPSHOT ERR") }
                 let board = Board(dictionary: dic)
@@ -155,4 +157,16 @@ extension DetailViewController: UITableViewDataSource {
         print(arr[indexPath.item].comment)
     }
     
+}
+
+// MARK: - CommentSaveDelegate
+extension DetailViewController: CommentSaveDelegate {
+    func saveComment(_ comment: Comment, uid: String) {
+        // TODO: - add Comment struct using
+        FirebaseConstant.FIRESTORE.document(uid).getDocument { snapshot, error in
+            guard let snapshot = snapshot else { return print("DEBUG: detailview snapshot err") }
+            print("DEBUG: \(snapshot.data())")
+        }
+        
+    }
 }

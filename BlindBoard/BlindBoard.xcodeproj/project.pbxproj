@@ -24,6 +24,8 @@
 		DF6F3EDA28AA7D3F00A2D052 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED928AA7D3F00A2D052 /* Board.swift */; };
 		DF6F3EDC28AA7D9F00A2D052 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */; };
 		DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */; };
+		DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */; };
+		DFE8636228DAF46500F975F6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636128DAF46500F975F6 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		DF6F3ED928AA7D3F00A2D052 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
+		DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
+		DFE8636128DAF46500F975F6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +125,7 @@
 				DF6F3ED128A6786B00A2D052 /* BoardViewController */,
 				DF6F3ED428A75CD800A2D052 /* DeatailViewController */,
 				DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */,
+				DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 		DF050B3E28A4098A00A5912D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				DFE8636128DAF46500F975F6 /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,7 +310,9 @@
 				DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */,
 				DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */,
 				DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */,
+				DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */,
 				DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */,
+				DFE8636228DAF46500F975F6 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

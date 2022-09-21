@@ -45,6 +45,7 @@ class AddBoardViewController: UIViewController {
     }()
 
     // MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         render()
@@ -62,7 +63,7 @@ class AddBoardViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .cancel))
             present(alert, animated: true)
         } else {
-            delegate?.addContent(board: Board(title: contentTitle.text ?? "no item", content: content.text ?? "no content", comments: ["none now"], uid: UUID().uuidString))
+            delegate?.addContent(board: Board(title: contentTitle.text ?? "no item", content: content.text ?? "no content", comments: ["none now", "done now"], uid: UUID().uuidString))
             self.dismiss(animated: true)
             contentTitle.text = ""
             content.text = ""
@@ -81,7 +82,5 @@ class AddBoardViewController: UIViewController {
         view.addSubview(save)
         save.anchor(top: content.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 50, paddingLeft: 24, paddingRight: 24, height: 50)
     }
-    
-
-
+ 
 }

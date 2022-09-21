@@ -10,14 +10,11 @@ import FirebaseFirestore
 
 class BoardTableViewController: UITableViewController {
     
-    let db = Firestore.firestore()
-
-    //MARK: - properties
+    //MARK: - Properties
     private var arr: [Board] = []
-
     let AddBoardViewControl = AddBoardViewController()
     
-    //MARK: - init
+    //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl = UIRefreshControl()
@@ -40,13 +37,11 @@ class BoardTableViewController: UITableViewController {
     }
     
     // MARK: - Actions
-    @objc
-    func writing() {
+    @objc func writing() {
         present(AddBoardViewControl, animated: true)
     }
     
-    @objc
-    func updateData() {
+    @objc func updateData() {
         // update the data from firebase
         DispatchQueue.main.async {
             self.refreshControl?.endRefreshing()
@@ -55,7 +50,7 @@ class BoardTableViewController: UITableViewController {
     
     // MARK: - Helpers
     func loadData() {
-        db.collection(FirebaseConstant.collectiontemp).order(by: "writtenTime", descending: true).addSnapshotListener { snapshot, error in
+        FirebaseConstant.FIRESTORE.order(by: "writtenTime", descending: true).addSnapshotListener { snapshot, error in
             if let error = error {
                 print("Load ERR!!! \(error)")
             }
@@ -94,7 +89,7 @@ class BoardTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 상세 페이지로 넘어가기
-        navigationController?.pushViewController(DetailViewController(number: arr[indexPath.item]), animated: true)
+        navigationController?.pushViewController(DetailViewController(board: arr[indexPath.item]), animated: true)
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -106,14 +101,7 @@ class BoardTableViewController: UITableViewController {
 // MARK: - BoardTableViewController AddDelegate
 extension BoardTableViewController: AddDelegate {
     func addContent(board: Board) {
-        db.collection(FirebaseConstant.collectiontemp).document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "comments": board.comments, "uid": board.uid])
-        
-//        db.collection(FirebaseConstant.collectiontemp).addDocument(data: ["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "comments": board.comments, "uid": board.uid]) { error in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            } else {
-//                print("Saved Succesfully")
-//            }
-//        }
+        FirebaseConstant.FIRESTORE.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "comments": board.comments, "uid": board.uid])
     }
+    
 }
