@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    //MARK: - properties
+    //MARK: - Properties
     private let titleLabel: UILabel = {
         let title = UILabel()
         title.text = "Blind Board⌨"
@@ -54,14 +54,16 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    @objc
-    func checkValidUser() {
+    // MARK: - Actions
+    
+    @objc func checkValidUser() {
         let vc = BoardTableViewController()
         navigationController?.pushViewController(vc, animated: true)
         
     }
 
-    //MARK: - init
+    //MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         render()
@@ -70,6 +72,8 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         view.backgroundColor = .systemBackground
     }
+    
+    // MARK: - Helpers
     
     private func render() {
         view.addSubview(titleLabel)

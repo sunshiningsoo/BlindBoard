@@ -26,6 +26,7 @@
 		DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */; };
 		DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */; };
 		DFE8636228DAF46500F975F6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636128DAF46500F975F6 /* CustomTextField.swift */; };
+		DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
 		DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		DFE8636128DAF46500F975F6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			children = (
 				DF6F3ECA28A6119B00A2D052 /* BoardTableViewController.swift */,
 				DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */,
+				DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */,
 			);
 			path = BoardViewController;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				DF6F3EDC28AA7D9F00A2D052 /* Comment.swift in Sources */,
 				DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */,
 				DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */,
+				DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */,
 				DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */,
 				DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */,
 				DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */,

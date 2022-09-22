@@ -10,8 +10,13 @@ import FirebaseFirestore
 
 class DetailViewController: UIViewController {
     
-    //MARK: - properties
-    private var arr: [Comment] = []
+    //MARK: - Properties
+    private var arr: [Comment] = [] {
+        didSet {
+            fetchComment()
+        }
+    }
+    
     private var board: Board
     
     private lazy var titleLabel: UILabel = {
@@ -76,6 +81,7 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
+        
     }
     
     // MARK: - Actions
@@ -106,34 +112,29 @@ class DetailViewController: UIViewController {
     }
     
     private func fetchComment() {
-        reloadComment { [weak self] board in
+        reloadComment { [weak self] comment in
             guard let self = self else { return }
-            self.board = board
-            if board.comments.count == 2 {
-                self.arr = [Comment(comment: board.comments.first ?? ""), Comment(comment: board.comments[1])]
-            } else {
-                self.arr = [Comment(comment: board.comments.first ?? "")]
-            }
+            self.arr = [Comment(comment: comment)]
             DispatchQueue.main.async {
                 self.commentTableView.reloadData()
             }
-            
         }
     }
     
-    func reloadComment(completion: @escaping(Board) -> Void) {
-        FirebaseConstant.FIRESTORE.document(board.uid).getDocument(completion: { snapshot, error in
+    func reloadComment(completion: @escaping(String) -> Void) {
+        FirebaseConstant.FIRECOMMENT.document(board.uid).getDocument { snapshot, error in
             if let snapshot = snapshot {
-                guard let dic = snapshot.data() else { return print("SNAPSHOT ERR") }
-                let board = Board(dictionary: dic)
-                completion(board)
+                guard let dic = snapshot.data() else { return }
+                let comment = dic["comments"] as? String
+                completion(comment ?? "")
             }
-        })
+        }
     }
     
 }
 
-//MARK: - tableView delegate
+//MARK: - UITableViewDelegate
+
 extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.cellIdentifier, for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
@@ -151,7 +152,7 @@ extension DetailViewController: UITableViewDelegate {
     
 }
 
-//MARK: - tableView dataSource
+//MARK: - UITableViewDataSource
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(arr[indexPath.item].comment)
@@ -160,13 +161,19 @@ extension DetailViewController: UITableViewDataSource {
 }
 
 // MARK: - CommentSaveDelegate
+
 extension DetailViewController: CommentSaveDelegate {
     func saveComment(_ comment: Comment, uid: String) {
-        // TODO: - add Comment struct using
-        FirebaseConstant.FIRESTORE.document(uid).getDocument { snapshot, error in
-            guard let snapshot = snapshot else { return print("DEBUG: detailview snapshot err") }
-            print("DEBUG: \(snapshot.data())")
+        FirebaseConstant.FIRECOMMENT.document(uid).setData(["comments": comment.comment]){ error in
+            if let error = error {
+                print("DEBUG: SAVE COMMENT ERROR \(error.localizedDescription)")
+            } else {
+                print("DEBUG: SAVE COMMENT WELL")
+            }
+            DispatchQueue.main.async {
+                self.commentTableView.reloadData()
+            }
         }
-        
     }
+    
 }

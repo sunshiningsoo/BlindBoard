@@ -25,6 +25,7 @@ class BoardTableViewController: UITableViewController {
         navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(writing))
         self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableViewCell.cellIdentifier)
+        self.tableView.register(BoardHeaderViewController.self, forHeaderFooterViewReuseIdentifier: BoardHeaderViewController.cellIdentifier)
         title = "Blind Board⌨️"
         
         loadData()
@@ -44,6 +45,7 @@ class BoardTableViewController: UITableViewController {
     @objc func updateData() {
         // update the data from firebase
         DispatchQueue.main.async {
+            self.loadData()
             self.refreshControl?.endRefreshing()
         }
     }
@@ -58,8 +60,8 @@ class BoardTableViewController: UITableViewController {
             guard let snapshot = snapshot else { return print("snapshot ERR!!") }
             for shot in snapshot.documents {
                 let sh = shot.data()
-                if let title = sh["testTitle"] as? String, let content = sh["textContent"] as? String, let comments = sh["comments"] as? [String], let uid = sh["uid"] as? String {
-                    let tempBoard = Board(title: title, content: content, comments: comments, uid: uid)
+                if let title = sh["testTitle"] as? String, let content = sh["textContent"] as? String, let uid = sh["uid"] as? String {
+                    let tempBoard = Board(title: title, content: content, uid: uid)
                     self.arr.append(tempBoard)
                 }
                 DispatchQueue.main.async {
@@ -70,7 +72,7 @@ class BoardTableViewController: UITableViewController {
         }
     }
 
-    //MARK: - datasource, delegate
+    // MARK: - datasource, delegate
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -87,6 +89,20 @@ class BoardTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: BoardHeaderViewController.cellIdentifier) as? BoardHeaderViewController else {
+            print("UIVIEW 못가져옴")
+            return UIView()
+            
+        }
+        
+        return header
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(100)
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 상세 페이지로 넘어가기
         navigationController?.pushViewController(DetailViewController(board: arr[indexPath.item]), animated: true)
@@ -98,10 +114,11 @@ class BoardTableViewController: UITableViewController {
     
 }
 
-// MARK: - BoardTableViewController AddDelegate
+// MARK: - AddDelegate
+
 extension BoardTableViewController: AddDelegate {
     func addContent(board: Board) {
-        FirebaseConstant.FIRESTORE.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "comments": board.comments, "uid": board.uid])
+        FirebaseConstant.FIRESTORE.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid])
     }
     
 }
