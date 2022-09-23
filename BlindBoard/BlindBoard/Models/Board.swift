@@ -19,8 +19,8 @@ struct Board: Codable {
     }
     
     init(dictionary: [String: Any]) {
-        self.title = dictionary["title"] as? String ?? ""
-        self.content = dictionary["content"] as? String ?? ""
+        self.title = dictionary["testTitle"] as? String ?? ""
+        self.content = dictionary["textContent"] as? String ?? ""
         self.uid = dictionary["uid"] as? String ?? ""
     }
 }

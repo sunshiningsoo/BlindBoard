@@ -11,14 +11,17 @@ import FirebaseFirestore
 class BoardTableViewController: UITableViewController {
     
     //MARK: - Properties
+    
     private var arr: [Board] = []
     let AddBoardViewControl = AddBoardViewController()
     
     //MARK: - LifeCycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl = UIRefreshControl()
-        self.refreshControl?.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(updateData), for: .valueChanged)
+        tableView.refreshControl = refresher
                 
         // navigation back bar hide
         navigationItem.leftBarButtonItem = nil
@@ -28,7 +31,7 @@ class BoardTableViewController: UITableViewController {
         self.tableView.register(BoardHeaderViewController.self, forHeaderFooterViewReuseIdentifier: BoardHeaderViewController.cellIdentifier)
         title = "Blind Board⌨️"
         
-        loadData()
+        fetchBoard()
         AddBoardViewControl.delegate = self
     }
     
@@ -38,41 +41,39 @@ class BoardTableViewController: UITableViewController {
     }
     
     // MARK: - Actions
+    
     @objc func writing() {
         present(AddBoardViewControl, animated: true)
     }
     
     @objc func updateData() {
         // update the data from firebase
-        DispatchQueue.main.async {
-            self.loadData()
-            self.refreshControl?.endRefreshing()
-        }
+        refreshControl?.endRefreshing()
+        fetchBoard()
     }
     
     // MARK: - Helpers
-    func loadData() {
-        FirebaseConstant.FIRESTORE.order(by: "writtenTime", descending: true).addSnapshotListener { snapshot, error in
+    
+    func fetchBoard() {
+        loadData { boards in
+            self.arr = boards
+            self.tableView.reloadData()
+        }
+    }
+    
+    func loadData(completion: @escaping([Board]) -> Void) {
+        FirebaseConstant.FIRESTORE.order(by: "writtenTime", descending: true).getDocuments { snapshot, error in
             if let error = error {
                 print("Load ERR!!! \(error)")
             }
-            self.arr = []
-            guard let snapshot = snapshot else { return print("snapshot ERR!!") }
-            for shot in snapshot.documents {
-                let sh = shot.data()
-                if let title = sh["testTitle"] as? String, let content = sh["textContent"] as? String, let uid = sh["uid"] as? String {
-                    let tempBoard = Board(title: title, content: content, uid: uid)
-                    self.arr.append(tempBoard)
-                }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+            guard let documents = snapshot?.documents else { return print("snapshot ERR!!") }
             
+            let documentsDone = documents.map { Board(dictionary: $0.data()) }
+            completion(documentsDone)
         }
     }
 
-    // MARK: - datasource, delegate
+    // MARK: - Datasource, Delegate
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -81,26 +82,23 @@ class BoardTableViewController: UITableViewController {
         return arr.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BoardTableViewCell.cellIdentifier, for: indexPath) as? BoardTableViewCell else { return UITableViewCell() }
-        cell.set(arr[indexPath.item])
+//        if !arr.isEmpty {
+            cell.set(arr[indexPath.row])
+//        }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: BoardHeaderViewController.cellIdentifier) as? BoardHeaderViewController else {
-            print("UIVIEW 못가져옴")
-            return UIView()
-            
-        }
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: BoardHeaderViewController.cellIdentifier) as? BoardHeaderViewController else { return UIView() }
         
         return header
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(100)
+        return CGFloat(150)
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -119,6 +117,7 @@ class BoardTableViewController: UITableViewController {
 extension BoardTableViewController: AddDelegate {
     func addContent(board: Board) {
         FirebaseConstant.FIRESTORE.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid])
+        fetchBoard() // 글 작성 이후에 바로 업데이트 되어, tableview에서 볼 수 있게 도와줌
     }
     
 }

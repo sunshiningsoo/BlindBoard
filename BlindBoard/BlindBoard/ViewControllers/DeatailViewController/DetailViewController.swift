@@ -171,7 +171,7 @@ extension DetailViewController: CommentSaveDelegate {
                 print("DEBUG: SAVE COMMENT WELL")
             }
             DispatchQueue.main.async {
-                self.commentTableView.reloadData()
+                self.fetchComment()
             }
         }
     }
