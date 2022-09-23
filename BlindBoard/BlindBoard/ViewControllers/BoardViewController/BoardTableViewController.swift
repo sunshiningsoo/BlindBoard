@@ -22,11 +22,11 @@ class BoardTableViewController: UITableViewController {
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(updateData), for: .valueChanged)
         tableView.refreshControl = refresher
-                
-        // navigation back bar hide
+        
         navigationItem.leftBarButtonItem = nil
         navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(writing))
+        
         self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableViewCell.cellIdentifier)
         self.tableView.register(BoardHeaderViewController.self, forHeaderFooterViewReuseIdentifier: BoardHeaderViewController.cellIdentifier)
         title = "Blind Board⌨️"
@@ -72,8 +72,12 @@ class BoardTableViewController: UITableViewController {
             completion(documentsDone)
         }
     }
+    
+}
 
-    // MARK: - Datasource, Delegate
+// MARK: - UITableViewDataSource
+
+extension BoardTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -82,32 +86,31 @@ class BoardTableViewController: UITableViewController {
         return arr.count
     }
     
+}
+
+// MARK: - UITableViewDelegate
+
+extension BoardTableViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 상세 페이지로 넘어가기
+        navigationController?.pushViewController(DetailViewController(board: arr[indexPath.item]), animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BoardTableViewCell.cellIdentifier, for: indexPath) as? BoardTableViewCell else { return UITableViewCell() }
-//        if !arr.isEmpty {
-            cell.set(arr[indexPath.row])
-//        }
+        cell.set(arr[indexPath.row])
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: BoardHeaderViewController.cellIdentifier) as? BoardHeaderViewController else { return UIView() }
-        
+        header.configureUI()
         return header
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(150)
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 상세 페이지로 넘어가기
-        navigationController?.pushViewController(DetailViewController(board: arr[indexPath.item]), animated: true)
-    }
-    
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
     }
     
 }

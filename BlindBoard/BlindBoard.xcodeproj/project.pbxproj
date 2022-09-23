@@ -27,6 +27,8 @@
 		DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */; };
 		DFE8636228DAF46500F975F6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636128DAF46500F975F6 /* CustomTextField.swift */; };
 		DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */; };
+		DFE8637228DDEFCE00F975F6 /* WordDescriptionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637128DDEFCE00F975F6 /* WordDescriptionHeaderView.swift */; };
+		DFE8637528DDF32000F975F6 /* WordTestHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637428DDF32000F975F6 /* WordTestHeaderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		DFE8636128DAF46500F975F6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderViewController.swift; sourceTree = "<group>"; };
+		DFE8637128DDEFCE00F975F6 /* WordDescriptionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDescriptionHeaderView.swift; sourceTree = "<group>"; };
+		DFE8637428DDF32000F975F6 /* WordTestHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTestHeaderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				DF6F3ED728AA797000A2D052 /* GoogleService-Info.plist */,
+				DFE8637328DDF2D800F975F6 /* ViewModels */,
 				DF050B3F28A40A2500A5912D /* Utils */,
 				DF050B3E28A4098A00A5912D /* Views */,
 				DF050B3D28A4097E00A5912D /* Models */,
@@ -126,8 +131,6 @@
 				DF050B2C28A4078200A5912D /* LoginViewController.swift */,
 				DF6F3ED128A6786B00A2D052 /* BoardViewController */,
 				DF6F3ED428A75CD800A2D052 /* DeatailViewController */,
-				DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */,
-				DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				DF6F3ECA28A6119B00A2D052 /* BoardTableViewController.swift */,
 				DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */,
 				DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */,
+				DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */,
 			);
 			path = BoardViewController;
 			sourceTree = "<group>";
@@ -182,8 +186,18 @@
 			children = (
 				DF6F3ED228A7269500A2D052 /* DetailViewController.swift */,
 				DF6F3ED528A75D0B00A2D052 /* CommentTableViewCell.swift */,
+				DFE8637128DDEFCE00F975F6 /* WordDescriptionHeaderView.swift */,
+				DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */,
 			);
 			path = DeatailViewController;
+			sourceTree = "<group>";
+		};
+		DFE8637328DDF2D800F975F6 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8637428DDF32000F975F6 /* WordTestHeaderViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,9 +324,11 @@
 				DF050B2928A4078200A5912D /* AppDelegate.swift in Sources */,
 				DF6F3EDC28AA7D9F00A2D052 /* Comment.swift in Sources */,
 				DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */,
+				DFE8637528DDF32000F975F6 /* WordTestHeaderViewModel.swift in Sources */,
 				DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */,
 				DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */,
 				DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */,
+				DFE8637228DDEFCE00F975F6 /* WordDescriptionHeaderView.swift in Sources */,
 				DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */,
 				DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */,
 				DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */,

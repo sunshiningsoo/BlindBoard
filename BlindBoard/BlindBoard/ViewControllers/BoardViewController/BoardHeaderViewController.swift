@@ -33,9 +33,8 @@ class BoardHeaderViewController: UITableViewHeaderFooterView {
     
     // MARK: - Helpers
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
+    func configureUI() {
+        contentView.backgroundColor = .lightGray
     }
     
 }

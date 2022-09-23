@@ -15,8 +15,11 @@ protocol CommentSaveDelegate {
 class AddCommentViewController: UIViewController {
 
     // MARK: - Properties
+    
     var commentDelegate: CommentSaveDelegate?
+    
     private let comment = CustomTextField(placeholder: "put comment here")
+    
     var board: Board
     
     private lazy var saveButton : UIButton = {
@@ -47,6 +50,7 @@ class AddCommentViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     @objc func saveComment() {
         commentDelegate?.saveComment(Comment(comment: comment.text ?? ""), uid: board.uid)
         self.dismiss(animated: true)

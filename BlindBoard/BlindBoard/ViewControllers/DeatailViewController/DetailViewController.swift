@@ -11,6 +11,7 @@ import FirebaseFirestore
 class DetailViewController: UIViewController {
     
     //MARK: - Properties
+    
     private var arr: [Comment] = [] {
         didSet {
             fetchComment()
@@ -21,12 +22,14 @@ class DetailViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let title = UILabel()
+        title.font = UIFont.boldSystemFont(ofSize: 40)
         title.text = board.title
         return title
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let title = UILabel()
+        title.font = UIFont.systemFont(ofSize: 20)
         title.text = board.content
         return title
     }()
@@ -36,15 +39,6 @@ class DetailViewController: UIViewController {
         table.delegate = self
         table.dataSource = self
         return table
-    }()
-    
-    private let contentView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBackground
-        view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.systemBlue.cgColor
-        view.layer.borderWidth = 1
-        return view
     }()
     
     private lazy var commentButton: UIButton = {
@@ -59,6 +53,7 @@ class DetailViewController: UIViewController {
     }()
     
     //MARK: - LifeCycle
+    
     init(board: Board){
         self.board = board
         super.init(nibName: nil, bundle: nil)
@@ -72,10 +67,9 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         render()
         commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.cellIdentifier)
+        commentTableView.register(WordDescriptionHeaderView.self, forHeaderFooterViewReuseIdentifier: WordDescriptionHeaderView.headerIdentifier)
         fetchComment()
         
-        // navigation bar setting
-        title = "익명의 글"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,6 +79,7 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
     @objc func addComment() {
         let addCommentViewController = AddCommentViewController(board: board)
         addCommentViewController.commentDelegate = self
@@ -93,18 +88,10 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: - Helpers
+    
     private func render() {
-        view.addSubview(contentView)
-        contentView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingRight: 10)
-        
-        view.addSubview(titleLabel)
-        titleLabel.anchor(top:contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 30, paddingLeft: 24, paddingRight: 24)
-        
-        view.addSubview(descriptionLabel)
-        descriptionLabel.anchor(top: titleLabel.bottomAnchor, left: contentView.leftAnchor, bottom: contentView.bottomAnchor, right: contentView.rightAnchor, paddingTop: 10, paddingLeft: 24, paddingBottom: 20, paddingRight: 24)
-        
         view.addSubview(commentTableView)
-        commentTableView.anchor(top: contentView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10)
+        commentTableView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
         
         view.addSubview(commentButton)
         commentButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 30, paddingBottom: 0, paddingRight: 30, height: 50)
@@ -123,11 +110,10 @@ class DetailViewController: UIViewController {
     
     func reloadComment(completion: @escaping(String) -> Void) {
         FirebaseConstant.FIRECOMMENT.document(board.uid).getDocument { snapshot, error in
-            if let snapshot = snapshot {
-                guard let dic = snapshot.data() else { return }
-                let comment = dic["comments"] as? String
-                completion(comment ?? "")
-            }
+            guard let dic = snapshot?.data() else { return }
+            let comment = dic["comments"] as? String
+            guard let comment = comment else { return }
+            completion(comment)
         }
     }
     
@@ -150,9 +136,20 @@ extension DetailViewController: UITableViewDelegate {
         return 1
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: WordDescriptionHeaderView.headerIdentifier) as? WordDescriptionHeaderView else { return UIView() }
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(100)
+    }
+    
 }
 
 //MARK: - UITableViewDataSource
+
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(arr[indexPath.item].comment)
@@ -170,10 +167,9 @@ extension DetailViewController: CommentSaveDelegate {
             } else {
                 print("DEBUG: SAVE COMMENT WELL")
             }
-            DispatchQueue.main.async {
-                self.fetchComment()
-            }
+            self.fetchComment()
         }
     }
     
 }
+

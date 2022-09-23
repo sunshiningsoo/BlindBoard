@@ -9,6 +9,8 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
     
+    // MARK: - Properties
+    
     static let cellIdentifier = "CommentTableViewCell"
     
     private let commentLabel: UILabel = {
@@ -17,9 +19,10 @@ class CommentTableViewCell: UITableViewCell {
         return comment
     }()
     
+    // MARK: - LifeCycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -37,6 +40,7 @@ class CommentTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Helpers
     private func render() {
         self.addSubview(commentLabel)
         commentLabel.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 10, paddingLeft: 24, paddingBottom: 10, paddingRight: 24)

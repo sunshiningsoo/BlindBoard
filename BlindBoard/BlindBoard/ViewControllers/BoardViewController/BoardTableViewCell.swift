@@ -11,26 +11,23 @@ class BoardTableViewCell: UITableViewCell {
     
     static let cellIdentifier = "BoardTableViewCell"
 
-    //MARK: - properties
+    //MARK: - Properties
+    
     private let titleLabel: UILabel = {
         let title = UILabel()
+        title.font = UIFont.boldSystemFont(ofSize: 30)
         return title
     }()
     
     private let content: UILabel = {
         let content = UILabel()
         content.font = UIFont.preferredFont(forTextStyle: .subheadline)
-        content.font = UIFont.systemFont(ofSize: 14)
+        content.font = UIFont.systemFont(ofSize: 20)
         return content
     }()
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    //MARK: - LifeCycle
     
-    //MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         render()
@@ -39,6 +36,8 @@ class BoardTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: - Helpers
     
     private func render() {
         self.addSubview(titleLabel)
@@ -52,6 +51,5 @@ class BoardTableViewCell: UITableViewCell {
         titleLabel.text = label.title
         content.text = label.content
     }
-    
 
 }
