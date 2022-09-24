@@ -11,9 +11,15 @@ class WordDescriptionHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
     
+    var viewModel: WordDescriptionHeaderViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     private let titleTest: UILabel = {
         let label = UILabel()
-        label.text = "test Label"
+        label.text = "test"
         return label
     }()
     
@@ -33,6 +39,8 @@ class WordDescriptionHeaderView: UITableViewHeaderFooterView {
     
     func configure() {
         contentView.backgroundColor = .red
+        guard let viewModel = viewModel else { return }
+        titleTest.text = viewModel.title
         self.addSubview(titleTest)
         titleTest.anchor(top: self.topAnchor, left: self.leftAnchor, paddingTop: 0, paddingLeft: 30)
     }

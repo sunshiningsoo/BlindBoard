@@ -11,7 +11,7 @@ import FirebaseFirestore
 class DetailViewController: UIViewController {
     
     //MARK: - Properties
-    
+        
     private var arr: [Comment] = [] {
         didSet {
             fetchComment()
@@ -138,7 +138,7 @@ extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: WordDescriptionHeaderView.headerIdentifier) as? WordDescriptionHeaderView else { return UIView() }
-        
+        headerView.viewModel = WordDescriptionHeaderViewModel(board: board)
         return headerView
     }
     
