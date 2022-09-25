@@ -13,7 +13,6 @@ class BoardTableViewController: UITableViewController {
     //MARK: - Properties
     
     private var arr: [Board] = []
-    let AddBoardViewControl = AddBoardViewController()
     
     //MARK: - LifeCycle
     
@@ -38,12 +37,14 @@ class BoardTableViewController: UITableViewController {
         title = "My Word"
         
         fetchBoard()
-        AddBoardViewControl.delegate = self
+        
     }
     
     // MARK: - Actions
     
     @objc func writing() {
+        let AddBoardViewControl = AddBoardViewController()
+        AddBoardViewControl.delegate = self
         present(AddBoardViewControl, animated: true)
     }
     
