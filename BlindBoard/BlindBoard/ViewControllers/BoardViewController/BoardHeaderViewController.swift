@@ -13,28 +13,39 @@ class BoardHeaderViewController: UITableViewHeaderFooterView {
     
     static let cellIdentifier = "BoardHeaderViewController"
     
-    let customView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
-        return view
+    private lazy var testButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("테스트 하러가기", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.tintColor = .white
+        button.addTarget(self, action: #selector(testGo), for: .touchUpInside)
+        return button
     }()
     
     // MARK: - LifeCycle
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        contentView.backgroundColor = .red
-        
+        configureUI()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Actions
+    
+    @objc func testGo() {
+        print("DEBUG: TestGo TAPPPED!!")
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
-        contentView.backgroundColor = .lightGray
+        contentView.backgroundColor = .systemBackground
+        
+        self.addSubview(testButton)
+        testButton.anchor(top: self.topAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 30, paddingLeft: 30, paddingBottom: 30, paddingRight: 30)
     }
     
 }

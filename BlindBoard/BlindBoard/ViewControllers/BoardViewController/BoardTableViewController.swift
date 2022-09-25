@@ -17,8 +17,14 @@ class BoardTableViewController: UITableViewController {
     
     //MARK: - LifeCycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.backgroundColor = .systemBackground
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let refresher = UIRefreshControl()
         refresher.addTarget(self, action: #selector(updateData), for: .valueChanged)
         tableView.refreshControl = refresher
@@ -29,15 +35,10 @@ class BoardTableViewController: UITableViewController {
         
         self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableViewCell.cellIdentifier)
         self.tableView.register(BoardHeaderViewController.self, forHeaderFooterViewReuseIdentifier: BoardHeaderViewController.cellIdentifier)
-        title = "Blind Board⌨️"
+        title = "My Word"
         
         fetchBoard()
         AddBoardViewControl.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        view.backgroundColor = .systemBackground
     }
     
     // MARK: - Actions
@@ -47,7 +48,6 @@ class BoardTableViewController: UITableViewController {
     }
     
     @objc func updateData() {
-        // update the data from firebase
         refreshControl?.endRefreshing()
         fetchBoard()
     }
@@ -98,7 +98,7 @@ extension BoardTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BoardTableViewCell.cellIdentifier, for: indexPath) as? BoardTableViewCell else { return UITableViewCell() }
-        cell.set(arr[indexPath.row])
+        cell.viewModel = BoardViewModel(board: arr[indexPath.row])
         
         return cell
     }

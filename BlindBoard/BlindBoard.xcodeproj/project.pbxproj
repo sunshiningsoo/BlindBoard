@@ -29,6 +29,9 @@
 		DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */; };
 		DFE8637228DDEFCE00F975F6 /* WordDescriptionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637128DDEFCE00F975F6 /* WordDescriptionHeaderView.swift */; };
 		DFE8637528DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637428DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift */; };
+		DFE8637728E01FC100F975F6 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637628E01FC100F975F6 /* BoardViewModel.swift */; };
+		DFE8637A28E0203400F975F6 /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637928E0203400F975F6 /* BoardProtocol.swift */; };
+		DFE8637C28E0273600F975F6 /* PaddingConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637B28E0273600F975F6 /* PaddingConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderViewController.swift; sourceTree = "<group>"; };
 		DFE8637128DDEFCE00F975F6 /* WordDescriptionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDescriptionHeaderView.swift; sourceTree = "<group>"; };
 		DFE8637428DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDescriptionHeaderViewModel.swift; sourceTree = "<group>"; };
+		DFE8637628E01FC100F975F6 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		DFE8637928E0203400F975F6 /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
+		DFE8637B28E0273600F975F6 /* PaddingConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 				DF050B3D28A4097E00A5912D /* Models */,
 				DF050B3C28A4097600A5912D /* ViewControllers */,
 				DFE8637328DDF2D800F975F6 /* ViewModels */,
+				DFE8637828E0201800F975F6 /* Protocols */,
 				DF050B2828A4078200A5912D /* AppDelegate.swift */,
 				DF050B2A28A4078200A5912D /* SceneDelegate.swift */,
 				DF050B3128A4078300A5912D /* Assets.xcassets */,
@@ -157,6 +164,7 @@
 			children = (
 				DF050B4028A40A2B00A5912D /* Extensions */,
 				DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */,
+				DFE8637B28E0273600F975F6 /* PaddingConstant.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -196,8 +204,17 @@
 			isa = PBXGroup;
 			children = (
 				DFE8637428DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift */,
+				DFE8637628E01FC100F975F6 /* BoardViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DFE8637828E0201800F975F6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8637928E0203400F975F6 /* BoardProtocol.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,13 +336,16 @@
 				DF6F3ECB28A6119B00A2D052 /* BoardTableViewController.swift in Sources */,
 				DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */,
 				DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */,
+				DFE8637A28E0203400F975F6 /* BoardProtocol.swift in Sources */,
 				DF6F3EDA28AA7D3F00A2D052 /* Board.swift in Sources */,
 				DF050B2D28A4078200A5912D /* LoginViewController.swift in Sources */,
 				DF050B2928A4078200A5912D /* AppDelegate.swift in Sources */,
 				DF6F3EDC28AA7D9F00A2D052 /* Comment.swift in Sources */,
+				DFE8637C28E0273600F975F6 /* PaddingConstant.swift in Sources */,
 				DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */,
 				DFE8637528DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift in Sources */,
 				DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */,
+				DFE8637728E01FC100F975F6 /* BoardViewModel.swift in Sources */,
 				DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */,
 				DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */,
 				DFE8637228DDEFCE00F975F6 /* WordDescriptionHeaderView.swift in Sources */,

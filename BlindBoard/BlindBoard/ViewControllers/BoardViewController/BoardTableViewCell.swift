@@ -9,9 +9,15 @@ import UIKit
 
 class BoardTableViewCell: UITableViewCell {
     
-    static let cellIdentifier = "BoardTableViewCell"
-
     //MARK: - Properties
+    
+    static let cellIdentifier = "BoardTableViewCell"
+    
+    var viewModel: BoardViewModel? {
+        didSet {
+            configure()
+        }
+    }
     
     private let titleLabel: UILabel = {
         let title = UILabel()
@@ -47,9 +53,11 @@ class BoardTableViewCell: UITableViewCell {
         content.anchor(top: titleLabel.bottomAnchor, left: self.leftAnchor, bottom: self.bottomAnchor, right: self.rightAnchor, paddingTop: 5, paddingLeft: 24, paddingBottom: 10, paddingRight: 24)
     }
     
-    func set(_ label: Board) {
-        titleLabel.text = label.title
-        content.text = label.content
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        
+        titleLabel.text = viewModel.title
+        content.text = viewModel.content
     }
 
 }
