@@ -63,7 +63,7 @@ class BoardTableViewController: UITableViewController {
     }
     
     func loadData(completion: @escaping([Board]) -> Void) {
-        FirebaseConstant.FIRESTORE.order(by: "writtenTime", descending: true).getDocuments { snapshot, error in
+        FirebaseConstant.COLLECTION_BOARD.order(by: "writtenTime", descending: true).getDocuments { snapshot, error in
             if let error = error {
                 print("Load ERR!!! \(error)")
             }
@@ -120,7 +120,7 @@ extension BoardTableViewController {
 
 extension BoardTableViewController: AddDelegate {
     func addContent(board: Board) {
-        FirebaseConstant.FIRESTORE.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid])
+        FirebaseConstant.COLLECTION_BOARD.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid])
         fetchBoard() // 글 작성 이후에 바로 업데이트 되어, tableview에서 볼 수 있게 도와줌
     }
     

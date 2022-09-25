@@ -15,6 +15,6 @@ struct FirebaseConstant {
     static let documenttemp: String = "documenttemp"
     static let commentCollection: String = "comments"
     
-    static let FIRESTORE = Firestore.firestore().collection(FirebaseConstant.collectiontemp)
-    static let FIRECOMMENT = Firestore.firestore().collection(FirebaseConstant.commentCollection)
+    static let COLLECTION_BOARD = Firestore.firestore().collection(FirebaseConstant.collectiontemp)
+
 }

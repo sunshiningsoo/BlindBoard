@@ -109,7 +109,7 @@ class DetailViewController: UIViewController {
     }
     
     func reloadComment(completion: @escaping([Comment]) -> Void) {
-        FirebaseConstant.FIRESTORE.document(board.uid).collection("comments").order(by: "commentMadeDate", descending: false).getDocuments { snapshot, error in
+        FirebaseConstant.COLLECTION_BOARD.document(board.uid).collection("comments").order(by: "commentMadeDate", descending: false).getDocuments { snapshot, error in
             guard let snapshot = snapshot?.documents else { return }
             
             let temp = snapshot.map { Comment(dictionary: $0.data()) }
@@ -124,7 +124,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.cellIdentifier, for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
-        cell.setupCell(comment: arr[indexPath.item])
+        cell.viewModel = CommentCellViewModel(comment: arr[indexPath.row])
         return cell
     }
     
@@ -152,7 +152,7 @@ extension DetailViewController: UITableViewDelegate {
 
 extension DetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(arr[indexPath.item].comment)
+        print(arr[indexPath.row].comment)
     }
     
 }
@@ -161,7 +161,7 @@ extension DetailViewController: UITableViewDataSource {
 
 extension DetailViewController: CommentSaveDelegate {
     func saveComment(_ comment: Comment, uid: String) {
-        FirebaseConstant.FIRESTORE.document(uid).collection("comments").addDocument(data: ["comment": comment.comment, "commentMadeDate": comment.commentMadeDate]) { error in
+        FirebaseConstant.COLLECTION_BOARD.document(uid).collection("comments").addDocument(data: ["comment": comment.comment, "commentMadeDate": comment.commentMadeDate]) { error in
             if let error = error {
                 print("DEBUG: SAVE COMMENT ERROR \(error.localizedDescription)")
             } else {

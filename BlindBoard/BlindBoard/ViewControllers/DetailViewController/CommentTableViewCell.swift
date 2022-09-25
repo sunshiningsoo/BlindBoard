@@ -11,6 +11,12 @@ class CommentTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     
+    var viewModel: CommentCellViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     static let cellIdentifier = "CommentTableViewCell"
     
     private let commentLabel: UILabel = {
@@ -50,6 +56,11 @@ class CommentTableViewCell: UITableViewCell {
         self.backgroundColor = .systemBackground
         commentLabel.text = comment.comment
         
+    }
+    
+    func configure() {
+        guard let viewModel = viewModel else { return }
+        commentLabel.text = viewModel.commentContent
     }
 
 }

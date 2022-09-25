@@ -32,6 +32,7 @@
 		DFE8637728E01FC100F975F6 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637628E01FC100F975F6 /* BoardViewModel.swift */; };
 		DFE8637A28E0203400F975F6 /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637928E0203400F975F6 /* BoardProtocol.swift */; };
 		DFE8637C28E0273600F975F6 /* PaddingConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637B28E0273600F975F6 /* PaddingConstant.swift */; };
+		DFE8638A28E0ADF600F975F6 /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8638928E0ADF600F975F6 /* CommentCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		DFE8637628E01FC100F975F6 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		DFE8637928E0203400F975F6 /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
 		DFE8637B28E0273600F975F6 /* PaddingConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingConstant.swift; sourceTree = "<group>"; };
+		DFE8638928E0ADF600F975F6 /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 			children = (
 				DFE8637428DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift */,
 				DFE8637628E01FC100F975F6 /* BoardViewModel.swift */,
+				DFE8638928E0ADF600F975F6 /* CommentCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */,
 				DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */,
 				DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */,
+				DFE8638A28E0ADF600F975F6 /* CommentCellViewModel.swift in Sources */,
 				DFE8636228DAF46500F975F6 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
