@@ -14,4 +14,9 @@ struct Comment: Codable {
     init(comment: String) {
         self.comment = comment
     }
+    
+    init(dictionary: [String: Any]) {
+        self.comment = dictionary["comment"] as? String ?? ""
+        self.commentMadeDate = dictionary["commentMadeDate"] as? String ?? ""
+    }
 }

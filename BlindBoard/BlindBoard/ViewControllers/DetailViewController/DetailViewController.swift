@@ -99,21 +99,21 @@ class DetailViewController: UIViewController {
     }
     
     private func fetchComment() {
-        reloadComment { [weak self] comment in
+        reloadComment { [weak self] comments in
             guard let self = self else { return }
-            self.arr = [Comment(comment: comment)]
+            self.arr = comments
             DispatchQueue.main.async {
                 self.commentTableView.reloadData()
             }
         }
     }
     
-    func reloadComment(completion: @escaping(String) -> Void) {
-        FirebaseConstant.FIRECOMMENT.document(board.uid).getDocument { snapshot, error in
-            guard let dic = snapshot?.data() else { return }
-            let comment = dic["comments"] as? String
-            guard let comment = comment else { return }
-            completion(comment)
+    func reloadComment(completion: @escaping([Comment]) -> Void) {
+        FirebaseConstant.FIRESTORE.document(board.uid).collection("comments").order(by: "commentMadeDate", descending: false).getDocuments { snapshot, error in
+            guard let snapshot = snapshot?.documents else { return }
+            
+            let temp = snapshot.map { Comment(dictionary: $0.data()) }
+            completion(temp)
         }
     }
     
@@ -161,7 +161,7 @@ extension DetailViewController: UITableViewDataSource {
 
 extension DetailViewController: CommentSaveDelegate {
     func saveComment(_ comment: Comment, uid: String) {
-        FirebaseConstant.FIRECOMMENT.document(uid).setData(["comments": comment.comment]){ error in
+        FirebaseConstant.FIRESTORE.document(uid).collection("comments").addDocument(data: ["comment": comment.comment, "commentMadeDate": comment.commentMadeDate]) { error in
             if let error = error {
                 print("DEBUG: SAVE COMMENT ERROR \(error.localizedDescription)")
             } else {
