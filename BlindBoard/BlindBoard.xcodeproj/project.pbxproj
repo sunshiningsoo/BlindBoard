@@ -33,6 +33,9 @@
 		DFE8637A28E0203400F975F6 /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637928E0203400F975F6 /* BoardProtocol.swift */; };
 		DFE8637C28E0273600F975F6 /* PaddingConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637B28E0273600F975F6 /* PaddingConstant.swift */; };
 		DFE8638A28E0ADF600F975F6 /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8638928E0ADF600F975F6 /* CommentCellViewModel.swift */; };
+		DFE8638D28E1935200F975F6 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8638C28E1935200F975F6 /* ImageService.swift */; };
+		DFE8638F28E1DF6300F975F6 /* WordImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8638E28E1DF6300F975F6 /* WordImg.swift */; };
+		DFE8639228E2E9E700F975F6 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8639128E2E9E700F975F6 /* Auth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +69,9 @@
 		DFE8637928E0203400F975F6 /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
 		DFE8637B28E0273600F975F6 /* PaddingConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingConstant.swift; sourceTree = "<group>"; };
 		DFE8638928E0ADF600F975F6 /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
+		DFE8638C28E1935200F975F6 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
+		DFE8638E28E1DF6300F975F6 /* WordImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordImg.swift; sourceTree = "<group>"; };
+		DFE8639128E2E9E700F975F6 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,7 @@
 				DF050B3C28A4097600A5912D /* ViewControllers */,
 				DFE8637328DDF2D800F975F6 /* ViewModels */,
 				DFE8637828E0201800F975F6 /* Protocols */,
+				DFE8638B28E1933B00F975F6 /* API */,
 				DF050B2828A4078200A5912D /* AppDelegate.swift */,
 				DF050B2A28A4078200A5912D /* SceneDelegate.swift */,
 				DF050B3128A4078300A5912D /* Assets.xcassets */,
@@ -149,6 +156,7 @@
 			children = (
 				DF6F3ED928AA7D3F00A2D052 /* Board.swift */,
 				DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */,
+				DFE8638E28E1DF6300F975F6 /* WordImg.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -164,6 +172,7 @@
 		DF050B3F28A40A2500A5912D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DFE8639028E2E9DC00F975F6 /* Auth */,
 				DF050B4028A40A2B00A5912D /* Extensions */,
 				DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */,
 				DFE8637B28E0273600F975F6 /* PaddingConstant.swift */,
@@ -218,6 +227,22 @@
 				DFE8637928E0203400F975F6 /* BoardProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DFE8638B28E1933B00F975F6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8638C28E1935200F975F6 /* ImageService.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		DFE8639028E2E9DC00F975F6 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				DFE8639128E2E9E700F975F6 /* Auth.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,9 +365,11 @@
 				DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */,
 				DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */,
 				DFE8637A28E0203400F975F6 /* BoardProtocol.swift in Sources */,
+				DFE8639228E2E9E700F975F6 /* Auth.swift in Sources */,
 				DF6F3EDA28AA7D3F00A2D052 /* Board.swift in Sources */,
 				DF050B2D28A4078200A5912D /* LoginViewController.swift in Sources */,
 				DF050B2928A4078200A5912D /* AppDelegate.swift in Sources */,
+				DFE8638D28E1935200F975F6 /* ImageService.swift in Sources */,
 				DF6F3EDC28AA7D9F00A2D052 /* Comment.swift in Sources */,
 				DFE8637C28E0273600F975F6 /* PaddingConstant.swift in Sources */,
 				DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */,
@@ -351,6 +378,7 @@
 				DFE8637728E01FC100F975F6 /* BoardViewModel.swift in Sources */,
 				DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */,
 				DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */,
+				DFE8638F28E1DF6300F975F6 /* WordImg.swift in Sources */,
 				DFE8637228DDEFCE00F975F6 /* WordDescriptionHeaderView.swift in Sources */,
 				DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */,
 				DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */,

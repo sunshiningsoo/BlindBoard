@@ -20,20 +20,6 @@ class DetailViewController: UIViewController {
     
     private var board: Board
     
-    private lazy var titleLabel: UILabel = {
-        let title = UILabel()
-        title.font = UIFont.boldSystemFont(ofSize: 40)
-        title.text = board.title
-        return title
-    }()
-    
-    private lazy var descriptionLabel: UILabel = {
-        let title = UILabel()
-        title.font = UIFont.systemFont(ofSize: 20)
-        title.text = board.content
-        return title
-    }()
-    
     private lazy var commentTableView: UITableView = {
         let table = UITableView()
         table.delegate = self
@@ -50,6 +36,12 @@ class DetailViewController: UIViewController {
         comment.layer.cornerRadius = 15
         
         return comment
+    }()
+    
+    private var imageViewUI: UIImageView = {
+        let iv = UIImageView()
+        iv.contentMode = .scaleAspectFill
+        return iv
     }()
     
     //MARK: - LifeCycle
@@ -69,13 +61,20 @@ class DetailViewController: UIViewController {
         commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.cellIdentifier)
         commentTableView.register(WordDescriptionHeaderView.self, forHeaderFooterViewReuseIdentifier: WordDescriptionHeaderView.headerIdentifier)
         fetchComment()
-        
+        ImageService.imagesFetch(word: board.title) { image in
+            self.imageViewUI.image = image
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
         
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        imageViewUI.image = UIImage()
     }
     
     // MARK: - Actions
@@ -96,6 +95,8 @@ class DetailViewController: UIViewController {
         view.addSubview(commentButton)
         commentButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 30, paddingBottom: 0, paddingRight: 30, height: 50)
         
+        view.addSubview(imageViewUI)
+        imageViewUI.anchor(bottom: commentButton.topAnchor, paddingBottom: 100, width: 300, height: 300)
     }
     
     private func fetchComment() {
@@ -124,6 +125,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CommentTableViewCell.cellIdentifier, for: indexPath) as? CommentTableViewCell else { return UITableViewCell() }
+        
         cell.viewModel = CommentCellViewModel(comment: arr[indexPath.row])
         return cell
     }
@@ -138,7 +140,8 @@ extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: WordDescriptionHeaderView.headerIdentifier) as? WordDescriptionHeaderView else { return UIView() }
-        headerView.viewModel = WordDescriptionHeaderViewModel(board: board)
+        
+        headerView.viewModel = WordDescriptionHeaderViewModel(board: self.board)
         return headerView
     }
     
@@ -164,8 +167,6 @@ extension DetailViewController: CommentSaveDelegate {
         FirebaseConstant.COLLECTION_BOARD.document(uid).collection("comments").addDocument(data: ["comment": comment.comment, "commentMadeDate": comment.commentMadeDate]) { error in
             if let error = error {
                 print("DEBUG: SAVE COMMENT ERROR \(error.localizedDescription)")
-            } else {
-                print("DEBUG: SAVE COMMENT WELL")
             }
             self.fetchComment()
         }
