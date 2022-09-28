@@ -9,5 +9,7 @@ target 'BlindBoard' do
   pod 'FirebaseAnalytics'
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'Firebase/Storage'
+  pod 'SDWebImage'
 
 end

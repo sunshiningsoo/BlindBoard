@@ -111,7 +111,9 @@ extension BoardTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(150)
+        let width = view.frame.width
+        let height = width / 3
+        return CGFloat(height)
     }
     
 }
@@ -120,8 +122,14 @@ extension BoardTableViewController {
 
 extension BoardTableViewController: AddDelegate {
     func addContent(board: Board) {
-        FirebaseConstant.COLLECTION_BOARD.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid])
-        fetchBoard() // 글 작성 이후에 바로 업데이트 되어, tableview에서 볼 수 있게 도와줌
+        ImageService.imagesFetch(word: board.title) { image in
+            ImageUploader.imageUpload(image: image) { imageUrl in
+                FirebaseConstant.COLLECTION_BOARD.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid, "imageUrl": imageUrl])
+                print("LOADING...")
+                self.dismiss(animated: true)
+                self.fetchBoard()
+            }
+        }
     }
     
 }

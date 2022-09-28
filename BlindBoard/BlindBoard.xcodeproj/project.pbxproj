@@ -36,6 +36,7 @@
 		DFE8638D28E1935200F975F6 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8638C28E1935200F975F6 /* ImageService.swift */; };
 		DFE8638F28E1DF6300F975F6 /* WordImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8638E28E1DF6300F975F6 /* WordImg.swift */; };
 		DFE8639228E2E9E700F975F6 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8639128E2E9E700F975F6 /* Auth.swift */; };
+		DFFFD8AA28E420C10027D0D8 /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFFFD8A928E420C10027D0D8 /* ImageUploader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		DFE8638C28E1935200F975F6 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 		DFE8638E28E1DF6300F975F6 /* WordImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordImg.swift; sourceTree = "<group>"; };
 		DFE8639128E2E9E700F975F6 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		DFFFD8A928E420C10027D0D8 /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				DFE8638C28E1935200F975F6 /* ImageService.swift */,
+				DFFFD8A928E420C10027D0D8 /* ImageUploader.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */,
 				DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */,
 				DFE8637A28E0203400F975F6 /* BoardProtocol.swift in Sources */,
+				DFFFD8AA28E420C10027D0D8 /* ImageUploader.swift in Sources */,
 				DFE8639228E2E9E700F975F6 /* Auth.swift in Sources */,
 				DF6F3EDA28AA7D3F00A2D052 /* Board.swift in Sources */,
 				DF050B2D28A4078200A5912D /* LoginViewController.swift in Sources */,

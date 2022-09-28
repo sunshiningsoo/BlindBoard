@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseStorage
+import SDWebImage
 
 class DetailViewController: UIViewController {
     
@@ -40,7 +42,7 @@ class DetailViewController: UIViewController {
     
     private var imageViewUI: UIImageView = {
         let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
+        iv.contentMode = .scaleAspectFit
         return iv
     }()
     
@@ -61,20 +63,13 @@ class DetailViewController: UIViewController {
         commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.cellIdentifier)
         commentTableView.register(WordDescriptionHeaderView.self, forHeaderFooterViewReuseIdentifier: WordDescriptionHeaderView.headerIdentifier)
         fetchComment()
-        ImageService.imagesFetch(word: board.title) { image in
-            self.imageViewUI.image = image
-        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
         
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        imageViewUI.image = UIImage()
     }
     
     // MARK: - Actions
@@ -95,8 +90,10 @@ class DetailViewController: UIViewController {
         view.addSubview(commentButton)
         commentButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingLeft: 30, paddingBottom: 0, paddingRight: 30, height: 50)
         
+        imageViewUI.sd_setImage(with: URL(string: board.imageUrl))
         view.addSubview(imageViewUI)
-        imageViewUI.anchor(bottom: commentButton.topAnchor, paddingBottom: 100, width: 300, height: 300)
+        imageViewUI.anchor(bottom: commentButton.topAnchor, paddingBottom: 200, width: 300, height: 300)
+        imageViewUI.centerX(inView: view)
     }
     
     private func fetchComment() {
@@ -146,7 +143,9 @@ extension DetailViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(100)
+        let width = view.frame.width
+        let height = width / 3
+        return CGFloat(height)
     }
     
 }
