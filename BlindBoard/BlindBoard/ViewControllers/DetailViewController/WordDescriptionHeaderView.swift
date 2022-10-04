@@ -16,6 +16,7 @@ class WordDescriptionHeaderView: UITableViewHeaderFooterView {
     var viewModel: WordDescriptionHeaderViewModel? {
         didSet {
             configure() // ViewModel이 deque되기 때문에, viewModel의 didSet 호출이 많음..
+            print("UPDATE")
         }
     }
     

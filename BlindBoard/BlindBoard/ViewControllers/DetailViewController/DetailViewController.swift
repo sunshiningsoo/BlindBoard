@@ -137,8 +137,12 @@ extension DetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: WordDescriptionHeaderView.headerIdentifier) as? WordDescriptionHeaderView else { return UIView() }
+        if headerView.viewModel == nil {
+            // TODO: - 이 함수가 왜 여러번 불리는지 이유는 모르겠음
+            // headerview의 viewModel이 계속해서 업데이트 되는 것을 막아줌
+            headerView.viewModel = WordDescriptionHeaderViewModel(board: self.board)
+        }
         
-        headerView.viewModel = WordDescriptionHeaderViewModel(board: self.board)
         return headerView
     }
     
