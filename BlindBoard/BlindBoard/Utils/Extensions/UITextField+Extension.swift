@@ -5,7 +5,6 @@
 //  Created by 박성수 on 2022/08/12.
 //
 
-import Foundation
 import UIKit
 
 extension UITextField {

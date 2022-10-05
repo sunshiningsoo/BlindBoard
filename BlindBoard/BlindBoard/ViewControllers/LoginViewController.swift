@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController {
     
     //MARK: - Properties
+    
     private let titleLabel: UILabel = {
         let title = UILabel()
         title.text = "Blind Board⌨"

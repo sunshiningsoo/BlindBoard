@@ -140,6 +140,7 @@ extension DetailViewController: UITableViewDelegate {
         if headerView.viewModel == nil {
             // TODO: - 이 함수가 왜 여러번 불리는지 이유는 모르겠음
             // headerview의 viewModel이 계속해서 업데이트 되는 것을 막아줌
+            // 이렇게 해두면, viewModel이 업데이트 되었을 때, 대응하지 못함 -> 구조를 바꿔주어야함
             headerView.viewModel = WordDescriptionHeaderViewModel(board: self.board)
         }
         
