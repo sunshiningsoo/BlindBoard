@@ -28,9 +28,11 @@ struct ImageService {
                 if photo.count != 0 {
                     guard let photoFirst: ImgInfo? = photo[1] else { return }
                     guard let realurl = URL(string: photoFirst?.src?.original ?? "") else { return print("realURL ERROR") }
-                    if let imageReal = try? Data(contentsOf: realurl) {
-                        guard let image = UIImage(data: imageReal) else { return }
-                        completion(image)
+                    DispatchQueue.main.async {
+                        if let imageReal = try? Data(contentsOf: realurl) {
+                            guard let image = UIImage(data: imageReal) else { return }
+                            completion(image)
+                        }
                     }
                 }
             }

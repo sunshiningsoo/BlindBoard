@@ -14,11 +14,12 @@ class DetailViewController: UIViewController {
     
     //MARK: - Properties
         
-    private var arr: [Comment] = [] {
-        didSet {
-            fetchComment()
-        }
-    }
+    private var arr: [Comment] = []
+//    {
+//        didSet {
+//            fetchComment()
+//        }
+//    }
     
     private var board: Board
     
@@ -63,7 +64,7 @@ class DetailViewController: UIViewController {
         commentTableView.register(CommentTableViewCell.self, forCellReuseIdentifier: CommentTableViewCell.cellIdentifier)
         commentTableView.register(WordDescriptionHeaderView.self, forHeaderFooterViewReuseIdentifier: WordDescriptionHeaderView.headerIdentifier)
         fetchComment()
-        
+        navigationItemSetting()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,6 +80,24 @@ class DetailViewController: UIViewController {
         addCommentViewController.commentDelegate = self
         present(addCommentViewController, animated: true)
 
+    }
+    
+    @objc func deleteWord() {
+        let alert = UIAlertController(title: "\(board.title) 삭제", message: "해당 단어를 삭제하시겠습니까?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "취소", style: .cancel))
+        alert.addAction(UIAlertAction(title: "삭제", style: .default, handler: { action in
+            self.showLoader(true)
+            FirebaseConstant.COLLECTION_BOARD.document(self.board.uid).delete()
+            Storage.storage().reference(withPath: "/\(SceneDelegate.uid ?? "error")/\(self.board.imageFileName)").delete { error in
+                if let error = error {
+                    print("delete에서 에러발생 \(error.localizedDescription)")
+                } else {
+                    self.showLoader(false)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        }))
+        present(alert, animated: true)
     }
     
     // MARK: - Helpers
@@ -115,6 +134,10 @@ class DetailViewController: UIViewController {
         }
     }
     
+    func navigationItemSetting() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .done, target: self, action: #selector(deleteWord))
+    }
+    
 }
 
 //MARK: - UITableViewDelegate
@@ -141,6 +164,7 @@ extension DetailViewController: UITableViewDelegate {
             // TODO: - 이 함수가 왜 여러번 불리는지 이유는 모르겠음
             // headerview의 viewModel이 계속해서 업데이트 되는 것을 막아줌
             // 이렇게 해두면, viewModel이 업데이트 되었을 때, 대응하지 못함 -> 구조를 바꿔주어야함
+            // arr didSet 안해주니까 계속 업데이트 되지는 않음
             headerView.viewModel = WordDescriptionHeaderViewModel(board: self.board)
         }
         

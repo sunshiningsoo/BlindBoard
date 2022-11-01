@@ -56,6 +56,12 @@ class AddBoardViewController: UIViewController {
         view.backgroundColor = .systemBackground
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        contentTitle.text = ""
+        content.text = ""
+    }
+    
     // MARK: - Actions
     
     @objc func saveBoard() {
@@ -65,9 +71,7 @@ class AddBoardViewController: UIViewController {
             present(alert, animated: true)
         } else {
             showLoader(true)
-            delegate?.addContent(board: Board(title: contentTitle.text ?? "no item", content: content.text ?? "no content", uid: UUID().uuidString, imageUrl: ""))
-            contentTitle.text = ""
-            content.text = ""
+            delegate?.addContent(board: Board(title: contentTitle.text ?? "no item", content: content.text ?? "no content", uid: UUID().uuidString, imageUrl: "", imageFileName: ""))
         }
         
     }

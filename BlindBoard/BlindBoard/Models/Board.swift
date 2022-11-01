@@ -12,12 +12,14 @@ struct Board: Codable {
     let content: String
     let uid: String
     let imageUrl: String
+    let imageFileName: String
     
-    init(title: String, content: String, uid: String, imageUrl: String) {
+    init(title: String, content: String, uid: String, imageUrl: String, imageFileName: String) {
         self.title = title
         self.content = content
         self.uid = uid
         self.imageUrl = imageUrl
+        self.imageFileName = imageFileName
     }
     
     init(dictionary: [String: Any]) {
@@ -25,5 +27,6 @@ struct Board: Codable {
         self.content = dictionary["textContent"] as? String ?? ""
         self.uid = dictionary["uid"] as? String ?? ""
         self.imageUrl = dictionary["imageUrl"] as? String ?? ""
+        self.imageFileName = dictionary["imageFileName"] as? String ?? ""
     }
 }

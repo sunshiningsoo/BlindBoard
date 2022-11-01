@@ -19,6 +19,7 @@ class BoardTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.backgroundColor = .systemBackground
+        fetchBoard()
     }
     
     override func viewDidLoad() {
@@ -124,8 +125,7 @@ extension BoardTableViewController: AddDelegate {
     func addContent(board: Board) {
         ImageService.imagesFetch(word: board.title) { image in
             ImageUploader.imageUpload(image: image) { imageUrl in
-                FirebaseConstant.COLLECTION_BOARD.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid, "imageUrl": imageUrl])
-                print("LOADING...")
+                FirebaseConstant.COLLECTION_BOARD.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid, "imageUrl": imageUrl[0], "imageFileName" : imageUrl[1]])
                 self.dismiss(animated: true)
                 self.fetchBoard()
                 self.showLoader(false)
