@@ -10,6 +10,7 @@ target 'BlindBoard' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'Firebase/Storage'
+  pod 'JGProgressHUD','~>2.0.3'
   pod 'SDWebImage'
 
 end

@@ -128,6 +128,7 @@ extension BoardTableViewController: AddDelegate {
                 print("LOADING...")
                 self.dismiss(animated: true)
                 self.fetchBoard()
+                self.showLoader(false)
             }
         }
     }

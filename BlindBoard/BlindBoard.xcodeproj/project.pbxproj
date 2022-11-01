@@ -24,6 +24,7 @@
 		DF6F3EDA28AA7D3F00A2D052 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED928AA7D3F00A2D052 /* Board.swift */; };
 		DF6F3EDC28AA7D9F00A2D052 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */; };
 		DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */; };
+		DFDBBAA829110B82009DC462 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDBBAA729110B82009DC462 /* UIViewController+Extension.swift */; };
 		DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */; };
 		DFE8636228DAF46500F975F6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636128DAF46500F975F6 /* CustomTextField.swift */; };
 		DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */; };
@@ -62,6 +63,7 @@
 		DF6F3ED928AA7D3F00A2D052 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
+		DFDBBAA729110B82009DC462 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		DFE8636128DAF46500F975F6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				DF050B4328A4E6D300A5912D /* UIView+Extension.swift */,
 				DF050B4528A60E2F00A5912D /* UITextField+Extension.swift */,
+				DFDBBAA729110B82009DC462 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				DF6F3ECB28A6119B00A2D052 /* BoardTableViewController.swift in Sources */,
 				DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */,
 				DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */,
+				DFDBBAA829110B82009DC462 /* UIViewController+Extension.swift in Sources */,
 				DFE8637A28E0203400F975F6 /* BoardProtocol.swift in Sources */,
 				DFFFD8AA28E420C10027D0D8 /* ImageUploader.swift in Sources */,
 				DFE8639228E2E9E700F975F6 /* Auth.swift in Sources */,

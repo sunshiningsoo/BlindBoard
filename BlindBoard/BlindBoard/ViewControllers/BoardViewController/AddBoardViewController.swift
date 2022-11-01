@@ -64,6 +64,7 @@ class AddBoardViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "OK", style: .cancel))
             present(alert, animated: true)
         } else {
+            showLoader(true)
             delegate?.addContent(board: Board(title: contentTitle.text ?? "no item", content: content.text ?? "no content", uid: UUID().uuidString, imageUrl: ""))
             contentTitle.text = ""
             content.text = ""
