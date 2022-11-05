@@ -124,6 +124,10 @@ extension BoardTableViewController {
 extension BoardTableViewController: AddDelegate {
     func addContent(board: Board) {
         ImageService.imagesFetch(word: board.title) { image in
+            if image == UIImage() {
+                self.showLoader(false)
+                return
+            }
             ImageUploader.imageUpload(image: image) { imageUrl in
                 FirebaseConstant.COLLECTION_BOARD.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid, "imageUrl": imageUrl[0], "imageFileName" : imageUrl[1]])
                 self.dismiss(animated: true)
