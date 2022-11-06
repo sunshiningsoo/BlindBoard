@@ -15,11 +15,6 @@ class DetailViewController: UIViewController {
     //MARK: - Properties
         
     private var arr: [Comment] = []
-//    {
-//        didSet {
-//            fetchComment()
-//        }
-//    }
     
     private var board: Board
     
