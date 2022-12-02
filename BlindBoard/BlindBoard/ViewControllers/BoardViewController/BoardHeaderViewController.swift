@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol TestStart {
+    func testStart()
+}
+
 class BoardHeaderViewController: UITableViewHeaderFooterView {
 
     // MARK: - Properties
     
     static let cellIdentifier = "BoardHeaderViewController"
+    
+    var delegate: TestStart?
     
     private lazy var testButton: UIButton = {
         let button = UIButton(type: .system)
@@ -36,7 +42,7 @@ class BoardHeaderViewController: UITableViewHeaderFooterView {
     // MARK: - Actions
     
     @objc func testGo() {
-        print("DEBUG: TestGo TAPPPED!!")
+        delegate?.testStart()
     }
     
     // MARK: - Helpers

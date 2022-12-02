@@ -108,6 +108,7 @@ extension BoardTableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: BoardHeaderViewController.cellIdentifier) as? BoardHeaderViewController else { return UIView() }
         header.configureUI()
+        header.delegate = self
         return header
     }
     
@@ -137,4 +138,12 @@ extension BoardTableViewController: AddDelegate {
         }
     }
     
+}
+
+// MARK: - TestStart
+
+extension BoardTableViewController: TestStart {
+    func testStart() {
+        navigationController?.pushViewController(TestViewController(), animated: true)
+    }
 }
