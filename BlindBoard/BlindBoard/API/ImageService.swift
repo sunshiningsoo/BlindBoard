@@ -32,7 +32,8 @@ struct ImageService {
             } else {
                 completion(UIImage())
             }
-        }.resume()
+        }
+        .resume()
         
     }
     
