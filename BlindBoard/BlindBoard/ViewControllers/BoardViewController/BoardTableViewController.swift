@@ -57,9 +57,9 @@ class BoardTableViewController: UITableViewController {
     // MARK: - Helpers
     
     func fetchBoard() {
-        loadData { boards in
-            self.arr = boards
-            self.tableView.reloadData()
+        loadData { [weak self] boards in
+            self?.arr = boards
+            self?.tableView.reloadData()
         }
     }
     
