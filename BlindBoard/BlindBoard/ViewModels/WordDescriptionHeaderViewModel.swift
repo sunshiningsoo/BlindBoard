@@ -8,18 +8,18 @@
 import Foundation
 
 struct WordDescriptionHeaderViewModel {
-    let board: Board
+    let word: Word
     
-    init(board: Board) {
-        self.board = board
+    init(board: Word) {
+        self.word = board
     }
     
     var title: String {
-        return board.title
+        return word.title
     }
     
     var content: String {
-        return board.content
+        return word.content
     }
     
 }

@@ -17,7 +17,7 @@ class CommentTableViewCell: UITableViewCell {
         }
     }
     
-    static let cellIdentifier = "CommentTableViewCell"
+    static let cellIdentifier = String(describing: CommentTableViewCell.self)
     
     private let commentLabel: UILabel = {
         let comment = UILabel()

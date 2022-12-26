@@ -20,7 +20,7 @@ class AddCommentViewController: UIViewController {
     
     private let comment = CustomTextField(placeholder: "put comment here")
     
-    var board: Board
+    var board: Word
     
     private lazy var saveButton : UIButton = {
         let button = UIButton(type: .system)
@@ -34,7 +34,7 @@ class AddCommentViewController: UIViewController {
     
     // MARK: - LifeCycle
     
-    init(board: Board) {
+    init(board: Word) {
         self.board = board
         super.init(nibName: nil, bundle: nil)
     }

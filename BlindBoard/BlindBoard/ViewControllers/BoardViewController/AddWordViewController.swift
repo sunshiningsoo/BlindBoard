@@ -8,10 +8,10 @@
 import UIKit
 
 protocol AddDelegate {
-    func addContent(board: Board)
+    func addContent(word: Word)
 }
 
-class AddBoardViewController: UIViewController {
+class AddWordViewController: UIViewController {
     
     
     // MARK: - Properties
@@ -71,7 +71,7 @@ class AddBoardViewController: UIViewController {
             present(alert, animated: true)
         } else {
             showLoader(true)
-            delegate?.addContent(board: Board(title: contentTitle.text ?? "no item", content: content.text ?? "no content", uid: UUID().uuidString, imageUrl: "", imageFileName: ""))
+            delegate?.addContent(word: Word(title: contentTitle.text ?? "no item", content: content.text ?? "no content", uid: UUID().uuidString, imageUrl: "", imageFileName: ""))
         }
         
     }

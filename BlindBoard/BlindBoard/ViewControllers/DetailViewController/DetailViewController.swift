@@ -16,7 +16,7 @@ class DetailViewController: UIViewController {
         
     private var arr: [Comment] = []
     
-    private var board: Board
+    private var board: Word
     
     private lazy var commentTableView: UITableView = {
         let table = UITableView()
@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
     
     //MARK: - LifeCycle
     
-    init(board: Board){
+    init(board: Word){
         self.board = board
         super.init(nibName: nil, bundle: nil)
     }

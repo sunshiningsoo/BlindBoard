@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.makeKeyAndVisible()
-        let navigationController = UINavigationController(rootViewController: BoardTableViewController())
+        let navigationController = UINavigationController(rootViewController: WordTableViewController())
         window?.rootViewController = navigationController
         
     }

@@ -7,13 +7,13 @@
 
 import UIKit
 
-class BoardTableViewCell: UITableViewCell {
+class WordTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    static let cellIdentifier = "BoardTableViewCell"
+    static let cellIdentifier = String(describing: WordTableViewCell.self)
     
-    var viewModel: BoardViewModel? {
+    var viewModel: WordViewModel? {
         didSet {
             configure()
         }

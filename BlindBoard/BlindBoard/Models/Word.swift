@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Board: Codable {
+struct Word: Codable {
     let title: String
     let content: String
     let uid: String

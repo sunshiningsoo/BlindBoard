@@ -11,7 +11,7 @@ protocol TestStart {
     func testStart()
 }
 
-class BoardHeaderViewController: UITableViewHeaderFooterView {
+class WordHeaderViewController: UITableViewHeaderFooterView {
 
     // MARK: - Properties
     

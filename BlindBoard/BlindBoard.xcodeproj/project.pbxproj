@@ -16,22 +16,22 @@
 		DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF050B4328A4E6D300A5912D /* UIView+Extension.swift */; };
 		DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF050B4528A60E2F00A5912D /* UITextField+Extension.swift */; };
 		DF296CFA2939E8F500F64477 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF296CF92939E8F500F64477 /* TestViewController.swift */; };
-		DF6F3ECB28A6119B00A2D052 /* BoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECA28A6119B00A2D052 /* BoardTableViewController.swift */; };
-		DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */; };
-		DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */; };
+		DF6F3ECB28A6119B00A2D052 /* WordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECA28A6119B00A2D052 /* WordTableViewController.swift */; };
+		DF6F3ECD28A6325F00A2D052 /* WordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECC28A6325F00A2D052 /* WordTableViewCell.swift */; };
+		DF6F3ECF28A634BA00A2D052 /* AddWordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ECE28A634BA00A2D052 /* AddWordViewController.swift */; };
 		DF6F3ED328A7269500A2D052 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED228A7269500A2D052 /* DetailViewController.swift */; };
 		DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED528A75D0B00A2D052 /* CommentTableViewCell.swift */; };
 		DF6F3ED828AA797000A2D052 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF6F3ED728AA797000A2D052 /* GoogleService-Info.plist */; };
-		DF6F3EDA28AA7D3F00A2D052 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED928AA7D3F00A2D052 /* Board.swift */; };
+		DF6F3EDA28AA7D3F00A2D052 /* Word.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3ED928AA7D3F00A2D052 /* Word.swift */; };
 		DF6F3EDC28AA7D9F00A2D052 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */; };
 		DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */; };
 		DFDBBAA829110B82009DC462 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFDBBAA729110B82009DC462 /* UIViewController+Extension.swift */; };
 		DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */; };
 		DFE8636228DAF46500F975F6 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636128DAF46500F975F6 /* CustomTextField.swift */; };
-		DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */; };
+		DFE8636A28DC47BE00F975F6 /* WordHeaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8636928DC47BE00F975F6 /* WordHeaderViewController.swift */; };
 		DFE8637228DDEFCE00F975F6 /* WordDescriptionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637128DDEFCE00F975F6 /* WordDescriptionHeaderView.swift */; };
 		DFE8637528DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637428DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift */; };
-		DFE8637728E01FC100F975F6 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637628E01FC100F975F6 /* BoardViewModel.swift */; };
+		DFE8637728E01FC100F975F6 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637628E01FC100F975F6 /* WordViewModel.swift */; };
 		DFE8637A28E0203400F975F6 /* BoardProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637928E0203400F975F6 /* BoardProtocol.swift */; };
 		DFE8637C28E0273600F975F6 /* PaddingConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8637B28E0273600F975F6 /* PaddingConstant.swift */; };
 		DFE8638A28E0ADF600F975F6 /* CommentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE8638928E0ADF600F975F6 /* CommentCellViewModel.swift */; };
@@ -56,22 +56,22 @@
 		DF050B4328A4E6D300A5912D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		DF050B4528A60E2F00A5912D /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		DF296CF92939E8F500F64477 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		DF6F3ECA28A6119B00A2D052 /* BoardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewController.swift; sourceTree = "<group>"; };
-		DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTableViewCell.swift; sourceTree = "<group>"; };
-		DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBoardViewController.swift; sourceTree = "<group>"; };
+		DF6F3ECA28A6119B00A2D052 /* WordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewController.swift; sourceTree = "<group>"; };
+		DF6F3ECC28A6325F00A2D052 /* WordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordTableViewCell.swift; sourceTree = "<group>"; };
+		DF6F3ECE28A634BA00A2D052 /* AddWordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWordViewController.swift; sourceTree = "<group>"; };
 		DF6F3ED228A7269500A2D052 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		DF6F3ED528A75D0B00A2D052 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		DF6F3ED728AA797000A2D052 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DF6F3ED928AA7D3F00A2D052 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		DF6F3ED928AA7D3F00A2D052 /* Word.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Word.swift; sourceTree = "<group>"; };
 		DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		DF6F3EDD28AA810F00A2D052 /* FirebaseConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseConstant.swift; sourceTree = "<group>"; };
 		DFDBBAA729110B82009DC462 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		DFE8635F28DAEDEC00F975F6 /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		DFE8636128DAF46500F975F6 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
-		DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHeaderViewController.swift; sourceTree = "<group>"; };
+		DFE8636928DC47BE00F975F6 /* WordHeaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordHeaderViewController.swift; sourceTree = "<group>"; };
 		DFE8637128DDEFCE00F975F6 /* WordDescriptionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDescriptionHeaderView.swift; sourceTree = "<group>"; };
 		DFE8637428DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordDescriptionHeaderViewModel.swift; sourceTree = "<group>"; };
-		DFE8637628E01FC100F975F6 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		DFE8637628E01FC100F975F6 /* WordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewModel.swift; sourceTree = "<group>"; };
 		DFE8637928E0203400F975F6 /* BoardProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardProtocol.swift; sourceTree = "<group>"; };
 		DFE8637B28E0273600F975F6 /* PaddingConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingConstant.swift; sourceTree = "<group>"; };
 		DFE8638928E0ADF600F975F6 /* CommentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCellViewModel.swift; sourceTree = "<group>"; };
@@ -163,7 +163,7 @@
 		DF050B3D28A4097E00A5912D /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DF6F3ED928AA7D3F00A2D052 /* Board.swift */,
+				DF6F3ED928AA7D3F00A2D052 /* Word.swift */,
 				DF6F3EDB28AA7D9F00A2D052 /* Comment.swift */,
 				DFE8638E28E1DF6300F975F6 /* WordImg.swift */,
 			);
@@ -210,10 +210,10 @@
 		DF6F3ED128A6786B00A2D052 /* BoardViewController */ = {
 			isa = PBXGroup;
 			children = (
-				DF6F3ECA28A6119B00A2D052 /* BoardTableViewController.swift */,
-				DF6F3ECC28A6325F00A2D052 /* BoardTableViewCell.swift */,
-				DFE8636928DC47BE00F975F6 /* BoardHeaderViewController.swift */,
-				DF6F3ECE28A634BA00A2D052 /* AddBoardViewController.swift */,
+				DF6F3ECA28A6119B00A2D052 /* WordTableViewController.swift */,
+				DF6F3ECC28A6325F00A2D052 /* WordTableViewCell.swift */,
+				DFE8636928DC47BE00F975F6 /* WordHeaderViewController.swift */,
+				DF6F3ECE28A634BA00A2D052 /* AddWordViewController.swift */,
 			);
 			path = BoardViewController;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				DFE8637428DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift */,
-				DFE8637628E01FC100F975F6 /* BoardViewModel.swift */,
+				DFE8637628E01FC100F975F6 /* WordViewModel.swift */,
 				DFE8638928E0ADF600F975F6 /* CommentCellViewModel.swift */,
 			);
 			path = ViewModels;
@@ -381,14 +381,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF6F3ED328A7269500A2D052 /* DetailViewController.swift in Sources */,
-				DF6F3ECB28A6119B00A2D052 /* BoardTableViewController.swift in Sources */,
+				DF6F3ECB28A6119B00A2D052 /* WordTableViewController.swift in Sources */,
 				DF050B4628A60E2F00A5912D /* UITextField+Extension.swift in Sources */,
-				DF6F3ECD28A6325F00A2D052 /* BoardTableViewCell.swift in Sources */,
+				DF6F3ECD28A6325F00A2D052 /* WordTableViewCell.swift in Sources */,
 				DFDBBAA829110B82009DC462 /* UIViewController+Extension.swift in Sources */,
 				DFE8637A28E0203400F975F6 /* BoardProtocol.swift in Sources */,
 				DFFFD8AA28E420C10027D0D8 /* ImageUploader.swift in Sources */,
 				DFE8639228E2E9E700F975F6 /* Auth.swift in Sources */,
-				DF6F3EDA28AA7D3F00A2D052 /* Board.swift in Sources */,
+				DF6F3EDA28AA7D3F00A2D052 /* Word.swift in Sources */,
 				DF050B2D28A4078200A5912D /* LoginViewController.swift in Sources */,
 				DF050B2928A4078200A5912D /* AppDelegate.swift in Sources */,
 				DFE8638D28E1935200F975F6 /* ImageService.swift in Sources */,
@@ -397,15 +397,15 @@
 				DF050B4428A4E6D300A5912D /* UIView+Extension.swift in Sources */,
 				DFE8637528DDF32000F975F6 /* WordDescriptionHeaderViewModel.swift in Sources */,
 				DF6F3ED628A75D0B00A2D052 /* CommentTableViewCell.swift in Sources */,
-				DFE8637728E01FC100F975F6 /* BoardViewModel.swift in Sources */,
-				DFE8636A28DC47BE00F975F6 /* BoardHeaderViewController.swift in Sources */,
+				DFE8637728E01FC100F975F6 /* WordViewModel.swift in Sources */,
+				DFE8636A28DC47BE00F975F6 /* WordHeaderViewController.swift in Sources */,
 				DF6F3EDE28AA810F00A2D052 /* FirebaseConstant.swift in Sources */,
 				DFE8638F28E1DF6300F975F6 /* WordImg.swift in Sources */,
 				DFE8637228DDEFCE00F975F6 /* WordDescriptionHeaderView.swift in Sources */,
 				DF296CFA2939E8F500F64477 /* TestViewController.swift in Sources */,
 				DF050B2B28A4078200A5912D /* SceneDelegate.swift in Sources */,
 				DFE8636028DAEDEC00F975F6 /* AddCommentViewController.swift in Sources */,
-				DF6F3ECF28A634BA00A2D052 /* AddBoardViewController.swift in Sources */,
+				DF6F3ECF28A634BA00A2D052 /* AddWordViewController.swift in Sources */,
 				DFE8638A28E0ADF600F975F6 /* CommentCellViewModel.swift in Sources */,
 				DFE8636228DAF46500F975F6 /* CustomTextField.swift in Sources */,
 				DFFFD8AC28E43DF20027D0D8 /* BoardService.swift in Sources */,

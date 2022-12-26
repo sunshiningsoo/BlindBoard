@@ -11,12 +11,11 @@ class WordDescriptionHeaderView: UITableViewHeaderFooterView {
     
     // MARK: - Properties
     
-    static let headerIdentifier: String = "WordTestHeaderView"
+    static let headerIdentifier: String = String(describing: WordDescriptionHeaderView.self)
     
     var viewModel: WordDescriptionHeaderViewModel? {
         didSet {
             configure() // ViewModel이 deque되기 때문에, viewModel의 didSet 호출이 많음..
-            print("UPDATE")
         }
     }
     

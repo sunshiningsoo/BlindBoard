@@ -58,7 +58,7 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @objc func checkValidUser() {
-        let vc = BoardTableViewController()
+        let vc = WordTableViewController()
         navigationController?.pushViewController(vc, animated: true)
         
     }

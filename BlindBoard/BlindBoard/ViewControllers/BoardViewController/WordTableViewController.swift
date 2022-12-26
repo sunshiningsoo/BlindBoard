@@ -8,11 +8,11 @@
 import UIKit
 import FirebaseFirestore
 
-class BoardTableViewController: UITableViewController {
+class WordTableViewController: UITableViewController {
     
     //MARK: - Properties
     
-    private var arr: [Board] = []
+    private var arr: [Word] = []
     
     //MARK: - LifeCycle
     
@@ -33,8 +33,8 @@ class BoardTableViewController: UITableViewController {
         navigationItem.hidesBackButton = true
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(writing))
         
-        self.tableView.register(BoardTableViewCell.self, forCellReuseIdentifier: BoardTableViewCell.cellIdentifier)
-        self.tableView.register(BoardHeaderViewController.self, forHeaderFooterViewReuseIdentifier: BoardHeaderViewController.cellIdentifier)
+        self.tableView.register(WordTableViewCell.self, forCellReuseIdentifier: WordTableViewCell.cellIdentifier)
+        self.tableView.register(WordHeaderViewController.self, forHeaderFooterViewReuseIdentifier: WordHeaderViewController.cellIdentifier)
         title = "My Word"
         
         fetchBoard()
@@ -44,7 +44,7 @@ class BoardTableViewController: UITableViewController {
     // MARK: - Actions
     
     @objc func writing() {
-        let AddBoardViewControl = AddBoardViewController()
+        let AddBoardViewControl = AddWordViewController()
         AddBoardViewControl.delegate = self
         present(AddBoardViewControl, animated: true)
     }
@@ -63,14 +63,14 @@ class BoardTableViewController: UITableViewController {
         }
     }
     
-    func loadData(completion: @escaping([Board]) -> Void) {
+    func loadData(completion: @escaping([Word]) -> Void) {
         FirebaseConstant.COLLECTION_BOARD.order(by: "writtenTime", descending: true).getDocuments { snapshot, error in
             if let error = error {
                 print("Load ERR!!! \(error)")
             }
             guard let documents = snapshot?.documents else { return print("snapshot ERR!!") }
             
-            let documentsDone = documents.map { Board(dictionary: $0.data()) }
+            let documentsDone = documents.map { Word(dictionary: $0.data()) }
             completion(documentsDone)
         }
     }
@@ -79,7 +79,7 @@ class BoardTableViewController: UITableViewController {
 
 // MARK: - UITableViewDataSource
 
-extension BoardTableViewController {
+extension WordTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -92,21 +92,21 @@ extension BoardTableViewController {
 
 // MARK: - UITableViewDelegate
 
-extension BoardTableViewController {
+extension WordTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 상세 페이지로 넘어가기
         navigationController?.pushViewController(DetailViewController(board: arr[indexPath.item]), animated: true)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BoardTableViewCell.cellIdentifier, for: indexPath) as? BoardTableViewCell else { return UITableViewCell() }
-        cell.viewModel = BoardViewModel(board: arr[indexPath.row])
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: WordTableViewCell.cellIdentifier, for: indexPath) as? WordTableViewCell else { return UITableViewCell() }
+        cell.viewModel = WordViewModel(board: arr[indexPath.row])
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: BoardHeaderViewController.cellIdentifier) as? BoardHeaderViewController else { return UIView() }
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: WordHeaderViewController.cellIdentifier) as? WordHeaderViewController else { return UIView() }
         header.configureUI()
         header.delegate = self
         return header
@@ -122,15 +122,15 @@ extension BoardTableViewController {
 
 // MARK: - AddDelegate
 
-extension BoardTableViewController: AddDelegate {
-    func addContent(board: Board) {
-        ImageService.imagesFetch(word: board.title) { image in
+extension WordTableViewController: AddDelegate {
+    func addContent(word: Word) {
+        ImageService.imagesFetch(word: word.title) { image in
             if image == UIImage() {
                 self.showLoader(false)
                 return
             }
             ImageUploader.imageUpload(image: image) { imageUrl in
-                FirebaseConstant.COLLECTION_BOARD.document(board.uid).setData(["testTitle": board.title, "textContent": board.content, "writtenTime": Date().ISO8601Format(), "uid": board.uid, "imageUrl": imageUrl[0], "imageFileName" : imageUrl[1]])
+                FirebaseConstant.COLLECTION_BOARD.document(word.uid).setData(["testTitle": word.title, "textContent": word.content, "writtenTime": Date().ISO8601Format(), "uid": word.uid, "imageUrl": imageUrl[0], "imageFileName" : imageUrl[1]])
                 self.dismiss(animated: true)
                 self.fetchBoard()
                 self.showLoader(false)
@@ -142,7 +142,7 @@ extension BoardTableViewController: AddDelegate {
 
 // MARK: - TestStart
 
-extension BoardTableViewController: TestStart {
+extension WordTableViewController: TestStart {
     func testStart() {
         navigationController?.pushViewController(TestViewController(), animated: true)
     }
